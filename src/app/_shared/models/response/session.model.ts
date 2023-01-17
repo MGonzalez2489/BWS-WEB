@@ -1,6 +1,6 @@
 import { IUser } from '../database';
 
 export interface ISession {
-  accessToken: string;
+  token: string;
   user: IUser;
 }
