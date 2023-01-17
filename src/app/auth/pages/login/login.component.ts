@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { BWSFormGroup } from '@core/classes';
+import { DestroyHook } from '@core/components';
 import { Store } from '@ngrx/store';
 import { LoginAction } from '@store/actions';
 import { BWSState } from '@store/states';
@@ -8,17 +11,26 @@ import { BWSState } from '@store/states';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
-  constructor(private store: Store<BWSState>) {
-    console.log('entro');
+export class LoginComponent extends DestroyHook {
+  loginForm: BWSFormGroup;
+  constructor(private store: Store<BWSState>, private fb: FormBuilder) {
+    super();
+    this.initializeForm();
   }
-
+  get form() {
+    return this.loginForm.controls;
+  }
+  initializeForm(): void {
+    this.loginForm = this.fb.group({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      rememberMe: new FormControl(false, [Validators.required]),
+    });
+  }
   login(): void {
-    const params = {
-      email: 'consumer@test.com',
-      password: '1234',
-      rememberMe: false,
-    };
-    this.store.dispatch(LoginAction({ params }));
+    this.loginForm.isSubmited = true;
+    console.log('form', this.loginForm);
+    if (!this.loginForm.valid) return;
+    this.store.dispatch(LoginAction({ params: this.loginForm.value }));
   }
 }

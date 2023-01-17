@@ -5,10 +5,11 @@ import { BWSStoreModule } from 'src/store/store.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BWSStoreModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BWSStoreModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })

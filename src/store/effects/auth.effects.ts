@@ -34,4 +34,28 @@ export class AuthEffects {
       )
     )
   );
+
+  signin = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.SigninAction),
+      mergeMap((data: { params: ILogin }) =>
+        this.authService.signin(data.params).pipe(
+          map((response: ResultModel<ISession>) => {
+            if (!response.isSuccess) {
+              alert(response.message);
+              return AuthActions.SigninFailedAction({ payload: response });
+            } else {
+              //this.router.navigate(['/onboarding']);
+              return AuthActions.SigninSuccessAction({
+                session: response.model,
+              });
+            }
+          }),
+          catchError((err) =>
+            of(AuthActions.SigninFailedAction({ payload: err }))
+          )
+        )
+      )
+    )
+  );
 }
