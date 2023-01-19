@@ -11,10 +11,7 @@
       </div>
       <div class="card-body">
         <form (submit)="signin()" [formGroup]="signInForm" novalidate>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Email</label
-            >
+          <div class="mb-3 form-floating">
             <input
               type="email"
               class="form-control"
@@ -23,6 +20,10 @@
               formControlName="email"
               autofocus
             />
+            <label for="exampleFormControlInput1" class="form-label"
+              >Email</label
+            >
+
             <div
               *ngIf="signInForm.isSubmited && form['email'].invalid"
               class="invalid-feedback"
@@ -30,10 +31,7 @@
               Email requerido
             </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Password</label
-            >
+          <div class="mb-3 form-floating">
             <input
               type="password"
               class="form-control"
@@ -41,6 +39,8 @@
               placeholder="Password"
               formControlName="password"
             />
+            <label for="pwsInput" class="form-label">Password</label>
+
             <div
               *ngIf="signInForm.isSubmited && form['password'].invalid"
               class="invalid-feedback"
@@ -48,17 +48,16 @@
               Password requerido
             </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Confirmar Password</label
-            >
+          <div class="mb-3 form-floating">
             <input
               type="password"
               class="form-control"
-              id="pswInput2"
+              id="copaInput"
               placeholder="Confirmar Password"
               formControlName="confirmPassword"
             />
+            <label for="copaInput" class="form-label">Confirmar Password</label>
+
             <div
               *ngIf="
                 signInForm.isSubmited &&
@@ -88,11 +87,8 @@
         class="card-footer d-flex justify-content-between align-items-center bg-white border-0"
       >
         <small class="text-muted">text fancy aqui</small>
-        <a [routerLink]="'signin'" class="btn btn-link">Crear Cuenta</a>
+        <a [routerLink]="''" class="btn btn-link">Ya tengo cuenta</a>
       </div>
     </div>
   </div>
 </div>
-<!--<p>login works!</p>-->
-
-<!--<button class="" (click)="login()">Login</button>-->

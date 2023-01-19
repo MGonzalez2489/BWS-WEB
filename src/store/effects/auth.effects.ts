@@ -3,12 +3,21 @@ import { AuthService } from '@core/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 
-import * as AuthActions from '@store/actions';
+import * as AuthActions from '@store/actions/auth.actions';
+import * as UserActions from '@store/actions/user.actions';
 import { ILogin, ISession, ResultModel } from '@shared/models';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { BWSState } from '@store/states';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router,
+    private store: Store<BWSState>
+  ) {}
 
   login$ = createEffect(() =>
     this.actions$.pipe(
@@ -21,11 +30,17 @@ export class AuthEffects {
                 payload: response.message,
               });
             }
+            const user = response.model.user;
+            if (!user.boardingRequired) {
+              this.router.navigate(['/onboarding']);
+            } else {
+              //navigate to the starting page for each profile
+            }
             //navigate to organization home page for owner
-            else
-              return AuthActions.LoginSuccessAction({
-                session: response.model,
-              });
+            this.store.dispatch(UserActions.GetUserSuccessAction({ user }));
+            return AuthActions.LoginSuccessAction({
+              session: response.model,
+            });
           }),
           catchError((err) =>
             of(AuthActions.LoginFailedAction({ payload: err }))
@@ -44,12 +59,15 @@ export class AuthEffects {
             if (!response.isSuccess) {
               alert(response.message);
               return AuthActions.SigninFailedAction({ payload: response });
-            } else {
-              //this.router.navigate(['/onboarding']);
-              return AuthActions.SigninSuccessAction({
-                session: response.model,
-              });
             }
+
+            const user = response.model.user;
+            this.store.dispatch(UserActions.GetUserSuccessAction({ user }));
+
+            this.router.navigate(['/onboarding']);
+            return AuthActions.SigninSuccessAction({
+              session: response.model,
+            });
           }),
           catchError((err) =>
             of(AuthActions.SigninFailedAction({ payload: err }))

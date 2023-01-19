@@ -11,18 +11,17 @@
       </div>
       <div class="card-body">
         <form (submit)="login()" [formGroup]="loginForm" novalidate>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Email</label
-            >
+          <div class="mb-3 form-floating">
             <input
               type="email"
               class="form-control"
-              id="exampleFormControlInput1"
+              id="emailInp"
               placeholder="name@example.com"
               formControlName="email"
               autofocus
             />
+            <label for="emailInp" class="form-label">Email</label>
+
             <div
               *ngIf="loginForm.isSubmited && form['email'].invalid"
               class="invalid-feedback"
@@ -30,10 +29,7 @@
               Email requerido
             </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"
-              >Password</label
-            >
+          <div class="mb-3 form-floating">
             <input
               type="password"
               class="form-control"
@@ -41,6 +37,8 @@
               placeholder="Password"
               formControlName="password"
             />
+            <label for="pswInput" class="form-label">Password</label>
+
             <div
               *ngIf="loginForm.isSubmited && form['password'].invalid"
               class="invalid-feedback"

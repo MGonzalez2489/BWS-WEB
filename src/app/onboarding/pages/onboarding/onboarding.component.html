@@ -1,0 +1,14 @@
+<div
+  class="container-fliuid page d-flex justify-content-center align-items-center"
+>
+  <div class="col-12 text-center" [ngSwitch]="currentStep">
+    <app-profile-form
+      *ngSwitchCase="'profile'"
+      [user]="user"
+    ></app-profile-form>
+    <app-general-form
+      [user]="user"
+      *ngSwitchCase="'general'"
+    ></app-general-form>
+  </div>
+</div>

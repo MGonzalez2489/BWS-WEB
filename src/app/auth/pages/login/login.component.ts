@@ -29,7 +29,6 @@ export class LoginComponent extends DestroyHook {
   }
   login(): void {
     this.loginForm.isSubmited = true;
-    console.log('form', this.loginForm);
     if (!this.loginForm.valid) return;
     this.store.dispatch(LoginAction({ params: this.loginForm.value }));
   }
