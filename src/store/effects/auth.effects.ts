@@ -40,6 +40,8 @@ export class AuthEffects {
             } else {
               if (user.consumerProfile) {
                 this.router.navigate(['/1']);
+              } else {
+                this.router.navigate(['/2']);
               }
               //navigate to the starting page for each profile
             }

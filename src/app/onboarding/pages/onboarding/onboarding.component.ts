@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { DestroyHook } from '@core/components';
 import { Store } from '@ngrx/store';
 import { IUser } from '@shared/models';
@@ -13,7 +14,7 @@ import { BWSState } from '@store/states';
 export class OnboardingComponent extends DestroyHook {
   user: IUser;
   currentStep: 'profile' | 'general';
-  constructor(private store$: Store<BWSState>) {
+  constructor(private store$: Store<BWSState>, private router: Router) {
     super();
     this.store$.select(getUser).subscribe((data) => {
       this.user = data;
@@ -29,11 +30,15 @@ export class OnboardingComponent extends DestroyHook {
       if (this.user.boardingRequired) {
         this.currentStep = 'general';
       } else {
-        //aqui navegamos al consumer home
+        this.router.navigate(['/1']);
       }
-    }
-    else if(this.user.artistProfile){
-      //aqui evaluamos lo del artist
+    } else if (this.user.artistProfile) {
+      if (this.user.boardingRequired) {
+        this.currentStep = 'general';
+      } else {
+        //TODO: add first services route
+        this.router.navigate(['/2']);
+      }
     }
   }
 }

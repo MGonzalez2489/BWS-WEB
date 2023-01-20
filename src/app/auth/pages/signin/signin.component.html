@@ -13,11 +13,12 @@
         <form (submit)="signin()" [formGroup]="signInForm" novalidate>
           <div class="mb-3 form-floating">
             <input
-              type="email"
               class="form-control"
-              id="exampleFormControlInput1"
-              placeholder="name@example.com"
+              id="email"
+              type="email"
+              placeholder="Email"
               formControlName="email"
+              data-sb-validations="required"
               autofocus
             />
             <label for="exampleFormControlInput1" class="form-label"
