@@ -1,87 +1,202 @@
-<div class="container-fluid page">
-  <div
-    class="col-12 d-flex justify-content-center align-items-center h-100 w-100"
-  >
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title text-center">Login</h5>
-        <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      </div>
-      <div class="card-body">
-        <form (submit)="login()" [formGroup]="loginForm" novalidate>
-          <div class="form-floating mb-3">
-            <input
-              class="form-control"
-              id="email"
-              type="email"
-              placeholder="Email"
-              formControlName="email"
-              data-sb-validations="required"
-            />
-            <label for="email">Email</label>
-            <div
-              class="invalid-feedback"
-              *ngIf="loginForm.isSubmited && form['email'].invalid"
-              data-sb-feedback="email:required"
-            >
-              Email es requerido.
-            </div>
-          </div>
-          <div class="form-floating mb-3">
-            <input
-              class="form-control"
-              id="password"
-              type="password"
-              placeholder="Password"
-              formControlName="password"
-              data-sb-validations="required"
-            />
-            <label for="password">Password</label>
-            <div
-              class="invalid-feedback"
-              data-sb-feedback="password:required"
-              *ngIf="loginForm.isSubmited && form['password'].invalid"
-            >
-              Password es requerido.
-            </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label d-block"></label>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                id="recordarme"
-                type="checkbox"
-                name=""
-                formControlName="rememberMe"
-                data-sb-validations=""
-              />
-              <label class="form-check-label" for="recordarme"
-                >Recordarme</label
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xxl-10 col-xl-10 col-lg-12">
+      <div class="card card-raised shadow-10 mt-5 mt-xl-10 mb-4">
+        <div class="row g-0">
+          <div class="col-lg-5 col-md-6">
+            <div class="card-body p-5">
+              <!-- Auth header with logo image-->
+              <div class="text-center">
+                <img
+                  class="mb-3"
+                  src="https://aceroprime.com/wp-content/plugins/widgetkit/assets/images/content-placeholder.svg"
+                  alt="..."
+                  style="height: 70px; border-radius: 50px"
+                />
+                <h1 class="display-5 mb-0">Login</h1>
+                <div class="subheading-1 mb-5">to continue to app</div>
+              </div>
+              <!-- Login submission form-->
+              <form
+                class="my-4"
+                (submit)="login()"
+                [formGroup]="loginForm"
+                novalidate
               >
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    formControlName="email"
+                    data-sb-validations="required"
+                  />
+                  <label for="email">Email</label>
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="loginForm.isSubmited && form['email'].invalid"
+                    data-sb-feedback="email:required"
+                  >
+                    Email es requerido.
+                  </div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    class="form-control"
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    formControlName="password"
+                    data-sb-validations="required"
+                  />
+                  <label for="password">Password</label>
+                  <div
+                    class="invalid-feedback"
+                    data-sb-feedback="password:required"
+                    *ngIf="loginForm.isSubmited && form['password'].invalid"
+                  >
+                    Password es requerido.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label d-block"></label>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      id="recordarme"
+                      type="checkbox"
+                      name=""
+                      formControlName="rememberMe"
+                      data-sb-validations=""
+                    />
+                    <label class="form-check-label" for="recordarme"
+                      >Recordarme</label
+                    >
+                  </div>
+                </div>
+                <app-error-message></app-error-message>
+                <div class="d-grid mt-5">
+                  <button
+                    class="btn btn-primary btn-lg"
+                    id="submitButton"
+                    type="submit"
+                  >
+                    Entrar
+                  </button>
+                </div>
+              </form>
+
+              <!-- Auth card message-->
+              <div class="text-center">
+                <a
+                  class="small fw-500 text-decoration-none"
+                  [routerLink]="'signin'"
+                  >New User? Create an account!</a
+                >
+              </div>
             </div>
           </div>
-          <app-error-message></app-error-message>
-          <div class="d-grid">
-            <button
-              class="btn btn-primary btn-lg"
-              id="submitButton"
-              type="submit"
-            >
-              Entrar
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <div
-        class="card-footer d-flex justify-content-between align-items-center bg-white border-0"
-      >
-        <small class="text-muted">text fancy aqui</small>
-        <a [routerLink]="'signin'" class="btn btn-link">Crear Cuenta</a>
+          <!-- Background image column using inline CSS-->
+          <div
+            class="col-lg-7 col-md-6 d-none d-md-block"
+            style="
+              background-image: url('https://source.unsplash.com/-uHVRvDr7pg/1600x900');
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+            "
+          ></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!--<div class="container-fluid page">-->
+<!--<div-->
+<!--class="col-12 d-flex justify-content-center align-items-center h-100 w-100"-->
+<!-->-->
+<!--<div class="card">-->
+<!--<div class="card-body">-->
+<!--<h5 class="card-title text-center">Login</h5>-->
+<!--<p class="card-text">-->
+<!--Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="card-body">-->
+<!--<form (submit)="login()" [formGroup]="loginForm" novalidate>-->
+<!--<div class="form-floating mb-3">-->
+<!--<input-->
+<!--class="form-control"-->
+<!--id="email"-->
+<!--type="email"-->
+<!--placeholder="Email"-->
+<!--formControlName="email"-->
+<!--data-sb-validations="required"-->
+<!--/>-->
+<!--<label for="email">Email</label>-->
+<!--<div-->
+<!--class="invalid-feedback"-->
+<!--*ngIf="loginForm.isSubmited && form['email'].invalid"-->
+<!--data-sb-feedback="email:required"-->
+<!-->-->
+<!--Email es requerido.-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="form-floating mb-3">-->
+<!--<input-->
+<!--class="form-control"-->
+<!--id="password"-->
+<!--type="password"-->
+<!--placeholder="Password"-->
+<!--formControlName="password"-->
+<!--data-sb-validations="required"-->
+<!--/>-->
+<!--<label for="password">Password</label>-->
+<!--<div-->
+<!--class="invalid-feedback"-->
+<!--data-sb-feedback="password:required"-->
+<!--*ngIf="loginForm.isSubmited && form['password'].invalid"-->
+<!-->-->
+<!--Password es requerido.-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="mb-3">-->
+<!--<label class="form-label d-block"></label>-->
+<!--<div class="form-check form-check-inline">-->
+<!--<input-->
+<!--class="form-check-input"-->
+<!--id="recordarme"-->
+<!--type="checkbox"-->
+<!--name=""-->
+<!--formControlName="rememberMe"-->
+<!--data-sb-validations=""-->
+<!--/>-->
+<!--<label class="form-check-label" for="recordarme"-->
+<!-->Recordarme</label-->
+<!-->-->
+<!--</div>-->
+<!--</div>-->
+<!--<app-error-message></app-error-message>-->
+<!--<div class="d-grid">-->
+<!--<button-->
+<!--class="btn btn-primary btn-lg"-->
+<!--id="submitButton"-->
+<!--type="submit"-->
+<!-->-->
+<!--Entrar-->
+<!--</button>-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+
+<!--<div-->
+<!--class="card-footer d-flex justify-content-between align-items-center bg-white border-0"-->
+<!-->-->
+<!--<small class="text-muted">text fancy aqui</small>-->
+<!--<a [routerLink]="'signin'" class="btn btn-link">Crear Cuenta</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
