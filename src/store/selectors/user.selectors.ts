@@ -7,10 +7,3 @@ export const getUser = createSelector(
   userState,
   (state: UserState) => state.user
 );
-
-//export const getUserState = createFeatureSelector('user');
-
-//export const getUser = createSelector(
-//getUserState,
-//(state: UserState) => state.user
-//);

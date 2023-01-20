@@ -11,57 +11,67 @@
       </div>
       <div class="card-body">
         <form (submit)="login()" [formGroup]="loginForm" novalidate>
-          <div class="mb-3 form-floating">
+          <div class="form-floating mb-3">
             <input
-              type="email"
               class="form-control"
-              id="emailInp"
-              placeholder="name@example.com"
+              id="email"
+              type="email"
+              placeholder="Email"
               formControlName="email"
-              autofocus
+              data-sb-validations="required"
             />
-            <label for="emailInp" class="form-label">Email</label>
-
+            <label for="email">Email</label>
             <div
-              *ngIf="loginForm.isSubmited && form['email'].invalid"
               class="invalid-feedback"
+              *ngIf="loginForm.isSubmited && form['email'].invalid"
+              data-sb-feedback="email:required"
             >
-              Email requerido
+              Email es requerido.
             </div>
           </div>
-          <div class="mb-3 form-floating">
+          <div class="form-floating mb-3">
             <input
-              type="password"
               class="form-control"
-              id="pswInput"
+              id="password"
+              type="password"
               placeholder="Password"
               formControlName="password"
+              data-sb-validations="required"
             />
-            <label for="pswInput" class="form-label">Password</label>
-
+            <label for="password">Password</label>
             <div
-              *ngIf="loginForm.isSubmited && form['password'].invalid"
               class="invalid-feedback"
+              data-sb-feedback="password:required"
+              *ngIf="loginForm.isSubmited && form['password'].invalid"
             >
-              Password requerido
+              Password es requerido.
             </div>
           </div>
-          <div class="mb-3 d-flex justify-content-end">
-            <div class="form-check">
+          <div class="mb-3">
+            <label class="form-label d-block"></label>
+            <div class="form-check form-check-inline">
               <input
                 class="form-check-input"
+                id="recordarme"
                 type="checkbox"
-                value=""
-                id="flexCheckDefault"
+                name=""
                 formControlName="rememberMe"
+                data-sb-validations=""
               />
-              <label class="form-check-label" for="flexCheckDefault">
-                Recordarme
-              </label>
+              <label class="form-check-label" for="recordarme"
+                >Recordarme</label
+              >
             </div>
           </div>
-          <div class="mb-3 text-center">
-            <button class="btn btn-primary w-75" type="submit">login</button>
+          <app-error-message></app-error-message>
+          <div class="d-grid">
+            <button
+              class="btn btn-primary btn-lg"
+              id="submitButton"
+              type="submit"
+            >
+              Entrar
+            </button>
           </div>
         </form>
       </div>
@@ -75,6 +85,3 @@
     </div>
   </div>
 </div>
-<!--<p>login works!</p>-->
-
-<!--<button class="" (click)="login()">Login</button>-->

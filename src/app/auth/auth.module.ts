@@ -4,18 +4,16 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { SigninComponent } from './pages/signin/signin.component';
-import {ReactiveFormsModule} from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorMessageComponent } from '@core/components/error-message/error-message.component';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    SigninComponent
-  ],
+  declarations: [LoginComponent, SigninComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    ErrorMessageComponent,
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

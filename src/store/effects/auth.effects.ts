@@ -9,12 +9,14 @@ import { ILogin, ISession, ResultModel } from '@shared/models';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BWSState } from '@store/states';
+import { ErrorService } from '@core/services/error.service';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
+    private errorService: ErrorService,
     private router: Router,
     private store: Store<BWSState>
   ) {}
@@ -22,10 +24,12 @@ export class AuthEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.LoginAction),
-      mergeMap((data: { params: ILogin }) =>
-        this.authService.login(data.params).pipe(
+      mergeMap((data: { params: ILogin }) => {
+        this.errorService.cleanError();
+        return this.authService.login(data.params).pipe(
           map((response: ResultModel<ISession>) => {
             if (!response.isSuccess) {
+              this.errorService.setError(response);
               return AuthActions.LoginFailedAction({
                 payload: response.message,
               });
@@ -45,22 +49,26 @@ export class AuthEffects {
               session: response.model,
             });
           }),
-          catchError((err) =>
-            of(AuthActions.LoginFailedAction({ payload: err }))
-          )
-        )
-      )
+          catchError((err) => {
+            this.errorService.setError(err);
+
+            return of(AuthActions.LoginFailedAction({ payload: err }));
+          })
+        );
+      })
     )
   );
 
   signin = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.SigninAction),
-      mergeMap((data: { params: ILogin }) =>
-        this.authService.signin(data.params).pipe(
+      mergeMap((data: { params: ILogin }) => {
+        this.errorService.cleanError();
+
+        return this.authService.signin(data.params).pipe(
           map((response: ResultModel<ISession>) => {
             if (!response.isSuccess) {
-              alert(response.message);
+              this.errorService.setError(response);
               return AuthActions.SigninFailedAction({ payload: response });
             }
 
@@ -72,11 +80,12 @@ export class AuthEffects {
               session: response.model,
             });
           }),
-          catchError((err) =>
-            of(AuthActions.SigninFailedAction({ payload: err }))
-          )
-        )
-      )
+          catchError((err) => {
+            this.errorService.setError(err);
+            return of(AuthActions.SigninFailedAction({ payload: err }));
+          })
+        );
+      })
     )
   );
 }

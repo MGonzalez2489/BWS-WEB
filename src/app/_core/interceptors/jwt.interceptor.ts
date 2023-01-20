@@ -31,9 +31,11 @@ export class JwtInterceptor implements HttpInterceptor {
       });
     }
 
-    return next
-      .handle(request)
-      .pipe(catchError((x) => this.handleAuthError(x)));
+    return next.handle(request);
+
+    //return next
+    //.handle(request)
+    //.pipe(catchError((x) => this.handleAuthError(x)));
   }
   private handleAuthError(err: HttpErrorResponse): Observable<any> {
     console.log('error authorization', err);
