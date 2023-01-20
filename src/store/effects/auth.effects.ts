@@ -31,9 +31,12 @@ export class AuthEffects {
               });
             }
             const user = response.model.user;
-            if (!user.boardingRequired) {
+            if (user.boardingRequired) {
               this.router.navigate(['/onboarding']);
             } else {
+              if (user.consumerProfile) {
+                this.router.navigate(['/1']);
+              }
               //navigate to the starting page for each profile
             }
             //navigate to organization home page for owner
