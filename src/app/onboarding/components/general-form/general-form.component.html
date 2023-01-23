@@ -1,76 +1,75 @@
-<div class="container px-5 my-5">
-  <div class="alert alert-info">
-    {{ user | json }}
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <form (submit)="submit()" [formGroup]="userForm">
-        <div class="form-floating mb-3">
-          <input
-            class="form-control"
-            id="nombre"
-            type="text"
-            placeholder="Nombre"
-            data-sb-validations="required"
-            autofocus
-            formControlName="firstName"
-          />
-          <label for="nombre">Nombre</label>
-          <div class="invalid-feedback" data-sb-feedback="nombre:required">
-            Nombre es requerido.
+<div class="container-fluid w-100">
+  <div class="col-12 d-flex justify-content-center align-items-center">
+    <div class="card w-50">
+      <div class="card-body">
+        <form (submit)="submit()" [formGroup]="userForm">
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              id="nombre"
+              type="text"
+              placeholder="Nombre"
+              data-sb-validations="required"
+              autofocus
+              formControlName="firstName"
+            />
+            <label for="nombre">Nombre</label>
+            <div class="invalid-feedback" data-sb-feedback="nombre:required">
+              Nombre es requerido.
+            </div>
           </div>
-        </div>
-        <div class="form-floating mb-3">
-          <input
-            class="form-control"
-            id="apellidos"
-            type="text"
-            placeholder="Apellidos"
-            data-sb-validations="required"
-            formControlName="lastName"
-          />
-          <label for="apellidos">Apellidos</label>
-          <div class="invalid-feedback" data-sb-feedback="apellidos:required">
-            Apellidos es requerido.
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              id="apellidos"
+              type="text"
+              placeholder="Apellidos"
+              data-sb-validations="required"
+              formControlName="lastName"
+            />
+            <label for="apellidos">Apellidos</label>
+            <div class="invalid-feedback" data-sb-feedback="apellidos:required">
+              Apellidos es requerido.
+            </div>
           </div>
-        </div>
-        <div class="form-floating mb-3">
-          <input
-            class="form-control"
-            id="telefono"
-            type="text"
-            placeholder="Telefono"
-            data-sb-validations="required"
-            formControlName="phone"
-          />
-          <label for="telefono">Telefono</label>
-          <div class="invalid-feedback" data-sb-feedback="telefono:required">
-            Telefono es requerido.
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              id="telefono"
+              type="text"
+              placeholder="Telefono"
+              data-sb-validations="required"
+              formControlName="phone"
+            />
+            <label for="telefono">Telefono</label>
+            <div class="invalid-feedback" data-sb-feedback="telefono:required">
+              Telefono es requerido.
+            </div>
           </div>
-        </div>
-        <div class="form-floating mb-3">
-          <select
-            class="form-select"
-            id="genero"
-            aria-label="Genero"
-            formControlName="gender"
-          >
-            <option value="Hombre">Hombre</option>
-            <option value="Mujer">Mujer</option>
-            <option value="Prefiero no responder">Prefiero no responder</option>
-          </select>
-          <label for="genero">Genero</label>
-        </div>
-        <div class="d-grid">
-          <button
-            class="btn btn-primary btn-lg"
-            id="submitButton"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              id="genero"
+              aria-label="Genero"
+              formControlName="gender"
+            >
+              <option [value]="a.key" *ngFor="let a of availableGender">
+                {{ a.value }}
+              </option>
+            </select>
+            <label for="genero">Genero</label>
+          </div>
+          <div class="d-grid">
+            <button
+              class="btn btn-primary btn-lg"
+              id="submitButton"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
