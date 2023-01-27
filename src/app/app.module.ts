@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwtInterceptor } from '@core/interceptors';
-import {BWSStoreModule} from '@store/store.module';
+import { BWSStoreModule } from '@store/store.module';
 
 @NgModule({
   declarations: [AppComponent],

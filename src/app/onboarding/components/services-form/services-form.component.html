@@ -1,0 +1,99 @@
+<div class="container-fluid w-100">
+  <div class="col-12 d-flex justify-content-center align-items-center">
+    <div class="card w-50">
+      <div class="card-body">
+        aqui se ven los services que ya agrego O que no tiene servicios aun
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+          Launch demo modal
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <form [formGroup]="form" (submit)="createService()">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-floating mb-3">
+        <select
+          class="form-select"
+          (ngModelChange)="selectCategory($event)"
+          id="categoria"
+          aria-label="Categoria"
+          formControlName="category"
+        >
+          <option value="0">Selecciona una Categoria</option>
+          <option [value]="c.publicId" *ngFor="let c of categories">
+            {{ c.displayName }}
+          </option>
+        </select>
+        <label for="categoria">Categoria</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select
+          class="form-select"
+          id="servicio"
+          aria-label="Servicio"
+          formControlName="service"
+          [disabled]="true"
+        >
+          <option [value]="c.publicId" *ngFor="let c of services">
+            {{ c.displayName }}
+          </option>
+        </select>
+        <label for="servicio">Servicio</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="precio"
+          type="number"
+          placeholder="Precio"
+          data-sb-validations="required"
+          formControlName="cost"
+        />
+        <label for="precio">Precio</label>
+        <div class="invalid-feedback" data-sb-feedback="precio:required">
+          Precio is required.
+        </div>
+      </div>
+      <div class="d-none" id="submitSuccessMessage">
+        <div class="text-center mb-3">
+          <div class="fw-bolder">Form submission successful!</div>
+          <p>To activate this form, sign up at</p>
+          <a href="https://startbootstrap.com/solution/contact-forms"
+            >https://startbootstrap.com/solution/contact-forms</a
+          >
+        </div>
+      </div>
+      <div class="d-none" id="submitErrorMessage">
+        <div class="text-center text-danger mb-3">Error sending message!</div>
+      </div>
+      <div class="d-grid">
+        <button class="btn btn-primary btn-lg" id="submitButton" type="submit">
+          Guardar
+        </button>
+      </div>
+    </div>
+    <!--<div class="modal-footer">-->
+    <!--<button-->
+    <!--type="submit"-->
+    <!--class="btn btn-outline-dark"-->
+    <!--(click)="modal.close('Save click')"-->
+    <!-->-->
+    <!--Save-->
+    <!--</button>-->
+    <!--</div>-->
+  </form>
+</ng-template>

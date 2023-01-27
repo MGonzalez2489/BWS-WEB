@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { DestroyHook } from '@core/components';
 import { Store } from '@ngrx/store';
 import { OnboardingStepsEnum } from '@shared/enums';
-import { IUser } from '@shared/models';
-import { getUser } from '@store/selectors';
+import { ICategory, IUser } from '@shared/models';
 import { BWSState } from '@store/states';
+import * as ProviderActions from '@store/actions/provider.actions';
+import { getCategories, getUser } from '@store/selectors';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-onboarding',
@@ -15,12 +17,24 @@ import { BWSState } from '@store/states';
 export class OnboardingComponent extends DestroyHook {
   user: IUser;
   currentStep: OnboardingStepsEnum = OnboardingStepsEnum.profile;
+  categories: ICategory[];
   constructor(private store$: Store<BWSState>, private router: Router) {
     super();
-    this.store$.select(getUser).subscribe((data) => {
-      this.user = data;
-      this.updateCurrentStep();
-    });
+    this.store$.dispatch(ProviderActions.GetCategoriesAction());
+    this.store$
+      .select(getUser)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data) => {
+        this.user = data;
+        this.updateCurrentStep();
+      });
+
+    this.store$
+      .select(getCategories)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data) => {
+        this.categories = data;
+      });
   }
   updateCurrentStep(): void {
     if (!this.user.artistProfile && !this.user.consumerProfile) {
@@ -43,8 +57,15 @@ export class OnboardingComponent extends DestroyHook {
     }
   }
   private generateArtistOnboardingStep(): void {
-    if (this.user.fullName || this.user.fullName === '') {
+    if (!this.categories || this.categories.length === 0) {
+    }
+    if (!this.user.fullName || this.user.fullName === '') {
       this.currentStep = OnboardingStepsEnum.general;
+    } else if (
+      !this.user.artistProfile.services ||
+      this.user.artistProfile.services.length == 0
+    ) {
+      this.currentStep = OnboardingStepsEnum.services;
     } else {
       this.currentStep = OnboardingStepsEnum.none;
     }

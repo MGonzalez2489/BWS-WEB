@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IUser } from '@shared/models';
+import { IArtistProfile, IUser } from '@shared/models';
 
 export enum USER_ACTIONS {
   GET_USER = '[USER] Get User',
@@ -9,11 +9,16 @@ export enum USER_ACTIONS {
   UPDATE_USER = '[USER] Update User',
   UPDATE_USER_SUCCESS = '[USER] Update User Success',
   UPDATE_USER_FAIL = '[USER] Update User Fail',
-
+  //ARTIST
   CREATE_USER_ARTIST_PROFILE = '[USER] Create User Artist Profile',
   CREATE_USER_ARTIST_PROFILE_SUCCESS = '[USER] Create User Artist Profile Success',
   CREATE_USER_ARTIST_PROFILE_FAIL = '[USER] Create User Artist Profile Fail',
 
+  CREATE_ARTIST_SERVICE = '[USER] Create Artist Service',
+  CREATE_ARTIST_SERVICE_SUCCESS = '[USER] Create Artist Service Success',
+  CREATE_ARTIST_SERVICE_FAIL = '[USER] Create Artist Service Fail',
+
+  //CONSUMER
   CREATE_USER_CONSUMER_PROFILE = '[USER] Create User Consumer Profile',
   CREATE_USER_CONSUMER_PROFILE_SUCCESS = '[USER] Create User Consumer Profile Success',
   CREATE_USER_CONSUMER_PROFILE_FAIL = '[USER] Create User Consumer Profile Fail',
@@ -67,5 +72,21 @@ export const CreateConsumerProfileSuccessAction = createAction(
 );
 export const CreateConsumerProfileFailAction = createAction(
   USER_ACTIONS.CREATE_USER_CONSUMER_PROFILE_FAIL,
+  props<{ payload: any }>()
+);
+
+//ARTIST Services
+export const CreateArtistServiceAction = createAction(
+  USER_ACTIONS.CREATE_ARTIST_SERVICE,
+  props<{ userId: string; serviceId: string; cost: number }>()
+);
+
+export const CreateArtistServiceSuccessAction = createAction(
+  USER_ACTIONS.CREATE_ARTIST_SERVICE_SUCCESS,
+  props<{ artistProfile: IArtistProfile }>()
+);
+
+export const CreateArtistServiceFailAction = createAction(
+  USER_ACTIONS.CREATE_ARTIST_SERVICE_FAIL,
   props<{ payload: any }>()
 );

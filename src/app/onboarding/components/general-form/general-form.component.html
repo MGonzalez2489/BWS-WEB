@@ -40,6 +40,8 @@
               placeholder="Telefono"
               data-sb-validations="required"
               formControlName="phone"
+              [mask]="'(000) 000-0000'"
+              [showMaskTyped]="true"
             />
             <label for="telefono">Telefono</label>
             <div class="invalid-feedback" data-sb-feedback="telefono:required">
@@ -57,7 +59,7 @@
                 {{ a.value }}
               </option>
             </select>
-            <label for="genero">Genero</label>
+            <label for="genero">Guardar</label>
           </div>
           <div class="d-grid">
             <button
@@ -65,7 +67,7 @@
               id="submitButton"
               type="submit"
             >
-              Submit
+              Guardar
             </button>
           </div>
         </form>

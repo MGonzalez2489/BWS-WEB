@@ -10,6 +10,8 @@ import {
 import { BWSState } from '../states';
 import { AuthReducer } from './auth.reducer';
 import { ErrorReducer } from './error.reducer';
+import { ProviderReducer } from './provider.reducer';
+import { UiReducer } from './ui.reducer';
 import { UserReducer } from './user.reducer';
 
 export function createRehydrateReducer<S, A extends Action = Action>(
@@ -36,7 +38,9 @@ export function createRehydrateReducer<S, A extends Action = Action>(
 }
 
 export const reducers: ActionReducerMap<BWSState> = {
+  UI: UiReducer,
   auth: AuthReducer,
   user: UserReducer,
   error: ErrorReducer,
+  provider: ProviderReducer,
 };

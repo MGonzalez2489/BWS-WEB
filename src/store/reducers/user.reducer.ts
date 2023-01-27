@@ -11,6 +11,29 @@ export const initialState: UserState = {
 const _userReducer = createRehydrateReducer(
   FEATURE_NAME.USER,
   initialState,
+  on(UserActions.CreateArtistServiceAction, (state) => {
+    return {
+      ...state,
+    };
+  }),
+  on(
+    UserActions.CreateArtistServiceSuccessAction,
+    (state, { artistProfile }) => {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          artistProfile,
+        },
+      };
+    }
+  ),
+  on(UserActions.CreateArtistServiceFailAction, (state, payload) => {
+    return {
+      ...state,
+    };
+  }),
+
   on(UserActions.UpdateUserAction, (state, { user }) => {
     return {
       ...state,

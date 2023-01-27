@@ -24,7 +24,6 @@ export class GeneralFormComponent extends DestroyHook implements OnInit {
   }
   ngOnInit(): void {
     this.initializeForm();
-    console.log(this.availableGender);
   }
   initializeForm(): void {
     this.userForm = this.fb.group({
@@ -52,7 +51,6 @@ export class GeneralFormComponent extends DestroyHook implements OnInit {
       publicId: null,
       createdAt: null,
     };
-    console.log('updatedUser', updatedUser);
-    //this.store.dispatch(UserActions.UpdateUserAction({ user: updatedUser }));
+    this.store.dispatch(UserActions.UpdateUserAction({ user: updatedUser }));
   }
 }

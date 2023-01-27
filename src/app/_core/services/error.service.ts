@@ -21,8 +21,6 @@ export class ErrorService {
 
     errorMessage = errorMessage.replace(/^"(.+(?="$))"$/, '$1');
 
-    console.log('error message', errorMessage);
-
     this.store.dispatch(ErrorActions.SetErrorAction({ error: errorMessage }));
   }
   cleanError() {

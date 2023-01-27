@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ProfileService } from '@core/services/profile.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { IUser, ResultModel } from '@shared/models';
+import { IArtistProfile, IUser, ResultModel } from '@shared/models';
 import {
   CreateArtistProfileAction,
   CreateArtistProfileFailAction,
@@ -11,11 +11,12 @@ import {
   CreateConsumerProfileAction,
   CreateConsumerProfileFailAction,
   CreateConsumerProfileSuccessAction,
+  RemoveOpenedModalAction,
 } from '@store/actions';
 import { BWSState } from '@store/states';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import * as UserActions from '@store/actions/user.actions';
-import { UserService } from '@core/services';
+import { ArtistServicesService, UserService } from '@core/services';
 
 @Injectable()
 export class UserEffects {
@@ -23,6 +24,7 @@ export class UserEffects {
     private actions$: Actions,
     private profileService: ProfileService,
     private userService: UserService,
+    private artistServicesService: ArtistServicesService,
     private router: Router,
     private store: Store<BWSState>
   ) {}
@@ -66,7 +68,6 @@ export class UserEffects {
 
             const user = response.model;
             this.store.dispatch(UserActions.GetUserSuccessAction({ user }));
-
             return CreateArtistProfileSuccessAction({ user: response.model });
           }),
           catchError((error) =>
@@ -100,6 +101,32 @@ export class UserEffects {
             of(UserActions.UpdateUserFailAction({ payload: error }))
           )
         )
+      )
+    )
+  );
+
+  createArtistService$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.CreateArtistServiceAction),
+      mergeMap((params) =>
+        this.artistServicesService
+          .createArtistService(params.userId, params.serviceId, params.cost)
+          .pipe(
+            map((response: ResultModel<IArtistProfile>) => {
+              if (!response.isSuccess) {
+                return UserActions.CreateArtistServiceFailAction({
+                  payload: response.message,
+                });
+              }
+              this.store.dispatch(RemoveOpenedModalAction());
+              return UserActions.CreateArtistServiceSuccessAction({
+                artistProfile: response.model,
+              });
+            }),
+            catchError((error) =>
+              of(UserActions.CreateArtistServiceFailAction({ payload: error }))
+            )
+          )
       )
     )
   );

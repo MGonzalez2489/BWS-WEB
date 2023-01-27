@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { BWSState, UserState } from '@store/states';
 
 export const userState = (state: BWSState) => state.user;
