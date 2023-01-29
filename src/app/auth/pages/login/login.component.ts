@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BWSFormGroup } from '@core/classes';
-import { DestroyHook } from '@core/components';
 import { Store } from '@ngrx/store';
 import { LoginAction } from '@store/actions';
 import { BWSState } from '@store/states';
@@ -11,10 +10,9 @@ import { BWSState } from '@store/states';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent extends DestroyHook {
+export class LoginComponent {
   loginForm: BWSFormGroup;
   constructor(private store: Store<BWSState>, private fb: FormBuilder) {
-    super();
     this.initializeForm();
   }
   get form() {

@@ -12,10 +12,9 @@ import { BWSState } from '@store/states';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
 })
-export class SigninComponent extends DestroyHook {
+export class SigninComponent {
   signInForm: BWSFormGroup;
   constructor(private store: Store<BWSState>, private fb: FormBuilder) {
-    super();
     this.initializeForm();
   }
   get form() {
@@ -39,11 +38,10 @@ export class SigninComponent extends DestroyHook {
   }
   signin(): void {
     this.signInForm.isSubmited = true;
-    console.log('params', this.form);
     if (!this.signInForm.valid) return;
 
     const params = this.signInForm.value;
     delete params.confirmPassword;
-    this.store.dispatch(SigninAction({ params: params }));
+    this.store.dispatch(SigninAction({ params }));
   }
 }
