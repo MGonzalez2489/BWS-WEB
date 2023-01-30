@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div
   class="container-fliuid page d-flex justify-content-center align-items-center"
 >
@@ -14,5 +15,6 @@
       [user]="user"
       *ngSwitchCase="'services'"
     ></app-services-form>
+    <div *ngSwitchDefault>Onboarding Page</div>
   </div>
 </div>

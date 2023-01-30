@@ -5,7 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ErrorMessageComponent } from '@core/components/error-message/error-message.component';
+import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
 
 @NgModule({
   declarations: [LoginComponent, SigninComponent],

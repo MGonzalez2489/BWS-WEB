@@ -5,9 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { DestroyHook } from '@core/components';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
+import { DestroyHook } from '@shared/components';
 import { ICategory, IService, IUser } from '@shared/models';
 import {
   CreateArtistServiceAction,

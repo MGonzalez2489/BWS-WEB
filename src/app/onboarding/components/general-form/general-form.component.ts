@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DestroyHook } from '@core/components';
 import { Store } from '@ngrx/store';
 import { IUser } from '@shared/models';
 import { BWSState } from '@store/states';
@@ -8,6 +7,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BWSFormGroup } from '@core/classes';
 import { GenderEnum } from '@shared/enums';
 import { UtilEnum } from '@shared/util';
+import { DestroyHook } from '@shared/components';
 
 @Component({
   selector: 'app-general-form',
@@ -50,6 +50,8 @@ export class GeneralFormComponent extends DestroyHook implements OnInit {
       boardingRequired: null,
       publicId: null,
       createdAt: null,
+      consumerProfile: this.user.consumerProfile,
+      artistProfile: this.user.artistProfile,
     };
     this.store.dispatch(UserActions.UpdateUserAction({ user: updatedUser }));
   }

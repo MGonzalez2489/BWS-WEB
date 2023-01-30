@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BWSFormGroup } from '@core/classes';
-import { DestroyHook } from '@core/components';
 import { Store } from '@ngrx/store';
 import MustMatchValidator from '@shared/validators/must-match.validator';
 import { SigninAction } from '@store/actions';

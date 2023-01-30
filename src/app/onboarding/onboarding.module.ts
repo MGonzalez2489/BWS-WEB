@@ -12,6 +12,7 @@ import {
   provideEnvironmentNgxMask,
 } from 'ngx-mask';
 import { ServicesFormComponent } from './components/services-form/services-form.component';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ServicesFormComponent } from './components/services-form/services-form.
     ReactiveFormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    SharedModule,
   ],
   providers: [provideEnvironmentNgxMask()],
 })

@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DestroyHook } from '@core/components';
 import { Store } from '@ngrx/store';
 import { IUser } from '@shared/models';
 import { BWSState } from '@store/states';
 import * as UserActions from '@store/actions/user.actions';
+import { DestroyHook } from '@shared/components';
 
 @Component({
   selector: 'app-profile-form',
