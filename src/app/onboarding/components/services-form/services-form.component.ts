@@ -29,6 +29,8 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
   categories: ICategory[];
 
   services: IService[];
+
+  userServices: any;
   form: FormGroup;
 
   closeResult = '';
@@ -38,8 +40,8 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
     private fb: FormBuilder
   ) {
     super();
+    //return this.user?.artistProfile?.services || [];
   }
-
   ngOnInit(): void {
     this.initializeForm();
 

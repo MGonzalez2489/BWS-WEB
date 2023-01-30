@@ -1,7 +1,5 @@
-<app-navbar></app-navbar>
-<div
-  class="container-fliuid page d-flex justify-content-center align-items-center"
->
+<div class="container-fliuid page">
+  <app-navbar></app-navbar>
   <div class="col-12" [ngSwitch]="currentStep">
     <app-profile-form
       *ngSwitchCase="'profile'"

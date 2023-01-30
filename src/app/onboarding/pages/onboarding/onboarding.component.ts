@@ -68,14 +68,17 @@ export class OnboardingComponent extends DestroyHook {
     let step: OnboardingStepsEnum;
     if (!this.user.fullName || this.user.fullName === '') {
       step = OnboardingStepsEnum.general;
-    } else if (
-      !this.user.artistProfile.services ||
-      this.user.artistProfile.services.length == 0
-    ) {
-      step = OnboardingStepsEnum.services;
     } else {
-      step = OnboardingStepsEnum.none;
+      step = OnboardingStepsEnum.services;
     }
+    //if (
+    //!this.user.artistProfile.services ||
+    //this.user.artistProfile.services.length == 0
+    //) {
+    //step = OnboardingStepsEnum.services;
+    //} else {
+    //step = OnboardingStepsEnum.none;
+    //}
     return step;
   }
 }

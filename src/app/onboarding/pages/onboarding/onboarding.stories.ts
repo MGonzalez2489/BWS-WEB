@@ -1,4 +1,6 @@
 import { StoreModule } from '@ngrx/store';
+import { OnboardingStepsEnum } from '@shared/enums';
+import { SharedModule } from '@shared/shared.module';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { OnboardingComponent } from './onboarding.component';
 export default {
@@ -10,11 +12,17 @@ export default {
   component: OnboardingComponent,
   decorators: [
     moduleMetadata({
-      imports: [StoreModule.forRoot({})],
+      imports: [StoreModule.forRoot({}), SharedModule],
     }),
   ],
 } as Meta;
 
-export const Onboarding: Story = () => ({
-  props: {},
+const Template: Story = (args) => ({
+  props: args,
 });
+
+export const Onboarding = Template.bind({});
+
+Onboarding.args = {
+  currentStep: OnboardingStepsEnum.none,
+};

@@ -1,15 +1,50 @@
 <div class="container-fluid w-100">
   <div class="col-12 d-flex justify-content-center align-items-center">
-    <div class="card w-50">
-      <div class="card-body">
-        aqui se ven los services que ya agrego O que no tiene servicios aun
-      </div>
-      <div class="card-footer">
-        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
-          Launch demo modal
-        </button>
-      </div>
+    <div
+      *ngIf="
+        !user.artistProfile.services || user.artistProfile.services.length === 0
+      "
+      class="d-flex flex-column justify-content-center align-items-center"
+    >
+      <p>aqui</p>
+      <button (click)="open(content)" class="btn btn-primary">Agregar</button>
     </div>
+    <div
+      *ngIf="
+        user.artistProfile.services && user.artistProfile.services.length > 0
+      "
+    >
+      <table class="table table-striped w-50">
+        <thead>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of user.artistProfile?.services; index as i">
+            <td>
+              {{ s | json }}
+            </td>
+            <td>otro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--<div class="card w-50">-->
+    <!--<ul class="list-group">-->
+    <!--<li class="list-group-item">An item</li>-->
+    <!--<li class="list-group-item">A second item</li>-->
+    <!--<li class="list-group-item">A third item</li>-->
+    <!--<li class="list-group-item">A fourth item</li>-->
+    <!--<li class="list-group-item">And a fifth one</li>-->
+    <!--</ul>-->
+    <!--<div class="card-footer">-->
+    <!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">-->
+    <!--Launch demo modal-->
+    <!--</button>-->
+    <!--</div>-->
+    <!--</div>-->
   </div>
 </div>
 

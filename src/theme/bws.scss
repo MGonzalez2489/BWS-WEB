@@ -5,7 +5,10 @@ body {
 .page {
   height: 100vh;
 }
+.page-content {
+  height: calc(100vh - 56px);
+}
 
-.invalid-feedback{
+.invalid-feedback {
   display: unset;
 }
