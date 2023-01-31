@@ -653,18 +653,6 @@
             "methods": []
         },
         {
-            "name": "User",
-            "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
-            "file": "src/stories/User.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface User {}\n",
-            "properties": [],
-            "indexSignatures": [],
-            "methods": []
-        },
-        {
             "name": "UserState",
             "id": "interface-UserState-c97dd903ccf29fac6bf4f66697f8978b0ff01abc9e229f001f02d8322e77e82571c0087519ddf4c5f42e1da298209f6b585af845110201ca3bf6850401d3eff7",
             "file": "src/store/states/user.state.ts",
@@ -2322,130 +2310,6 @@
             "templateData": "<router-outlet></router-outlet>\n"
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-4ef205c97a334c309aa4001c8ab4a6d9571dcae18d0e85aaf0d367467ab5d3a9f13ab3573726f1fcb409bc9b49894dadfb80b1bbe1b6ba7041455ad9d4922004",
-            "file": "src/stories/button.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-button",
-            "styleUrls": [
-                "./button.css"
-            ],
-            "styles": [],
-            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "backgroundColor",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nWhat background color to use\n",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 26,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "pos": 711,
-                            "end": 724,
-                            "flags": 4227072,
-                            "modifierFlagsCache": 0,
-                            "transformFlags": 0,
-                            "kind": 325,
-                            "tagName": {
-                                "pos": 712,
-                                "end": 720,
-                                "flags": 4227072,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
-                                "kind": 79,
-                                "escapedText": "required"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "rawdescription": "\n\nButton contents\n\n",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 40,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nIs this the principal call to action on the page?\n",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 20,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nHow large should the button be?\n",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 32,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nOptional click handler\n",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 46,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
-                    "styleUrl": "./button.css"
-                }
-            ],
-            "stylesData": "",
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 48
-                    }
-                }
-            }
-        },
-        {
             "name": "DestroyHook",
             "id": "component-DestroyHook-6fd40742423d64e3e7da4240801a2029fc0cf0e2d4d890e6933de1cd33a97c9d691db07c9f76b753604603311087cd91be914b34eeb9b2a755d6c49957b303b9",
             "file": "src/app/_shared/components/base-destroy.component.ts",
@@ -2752,80 +2616,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"container-fluid w-100\">\n  <div class=\"col-12 d-flex justify-content-center align-items-center\">\n    <div class=\"card w-50\">\n      <div class=\"card-body\">\n        <form (submit)=\"submit()\" [formGroup]=\"userForm\">\n          <div class=\"form-floating mb-3\">\n            <input\n              class=\"form-control\"\n              id=\"nombre\"\n              type=\"text\"\n              placeholder=\"Nombre\"\n              data-sb-validations=\"required\"\n              autofocus\n              formControlName=\"firstName\"\n            />\n            <label for=\"nombre\">Nombre</label>\n            <div class=\"invalid-feedback\" data-sb-feedback=\"nombre:required\">\n              Nombre es requerido.\n            </div>\n          </div>\n          <div class=\"form-floating mb-3\">\n            <input\n              class=\"form-control\"\n              id=\"apellidos\"\n              type=\"text\"\n              placeholder=\"Apellidos\"\n              data-sb-validations=\"required\"\n              formControlName=\"lastName\"\n            />\n            <label for=\"apellidos\">Apellidos</label>\n            <div class=\"invalid-feedback\" data-sb-feedback=\"apellidos:required\">\n              Apellidos es requerido.\n            </div>\n          </div>\n          <div class=\"form-floating mb-3\">\n            <input\n              class=\"form-control\"\n              id=\"telefono\"\n              type=\"text\"\n              placeholder=\"Telefono\"\n              data-sb-validations=\"required\"\n              formControlName=\"phone\"\n              [mask]=\"'(000) 000-0000'\"\n              [showMaskTyped]=\"true\"\n            />\n            <label for=\"telefono\">Telefono</label>\n            <div class=\"invalid-feedback\" data-sb-feedback=\"telefono:required\">\n              Telefono es requerido.\n            </div>\n          </div>\n          <div class=\"form-floating mb-3\">\n            <select\n              class=\"form-select\"\n              id=\"genero\"\n              aria-label=\"Genero\"\n              formControlName=\"gender\"\n            >\n              <option [value]=\"a.key\" *ngFor=\"let a of availableGender\">\n                {{ a.value }}\n              </option>\n            </select>\n            <label for=\"genero\">Guardar</label>\n          </div>\n          <div class=\"d-grid\">\n            <button\n              class=\"btn btn-primary btn-lg\"\n              id=\"submitButton\"\n              type=\"submit\"\n            >\n              Guardar\n            </button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n"
-        },
-        {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-a557eec14f72c438a8033301f4d6ce023e0a1844a3b06ec2b38794a612acc31735ae78a5ee10071b230c8c20d699eb914554e69d07ade54adb371da8efb464cc",
-            "file": "src/stories/header.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
-            ],
-            "styles": [],
-            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            primary\n            size=\"small\"\n            primary=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 65,
-                    "type": "User | null",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 74,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 68,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 71,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            primary\n            size=\"small\"\n            primary=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n\n.welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
-            "stylesData": ""
+            "templateData": "<div class=\"container-fluid w-100\">\n  <div\n    class=\"col-12 d-flex flex-column justify-content-center align-items-center\"\n  >\n    <div class=\"m-5\">\n      <h4>Cuentanos mas sobre ti!</h4>\n      <p>\n        Queremos ofrecerte la mejor experiencia posible en tu\n        <span class=\"text-info\" *ngIf=\"user.consumerProfile\"\n          >busqueda de servicios</span\n        >.\n        <span class=\"text-info\" *ngIf=\"user.artistProfile\"\n          >camino como artista</span\n        >.\n      </p>\n    </div>\n    <div class=\"card w-50 border-0\">\n      <div class=\"card-body\">\n        <form (submit)=\"submit()\" [formGroup]=\"userForm\">\n          <div class=\"form-floating mb-3\">\n            <input\n              class=\"form-control\"\n              id=\"nombre\"\n              type=\"text\"\n              placeholder=\"Nombre\"\n              data-sb-validations=\"required\"\n              autofocus\n              formControlName=\"firstName\"\n            />\n            <label for=\"nombre\">Nombre</label>\n            <div class=\"invalid-feedback\" data-sb-feedback=\"nombre:required\">\n              Nombre requerido.\n            </div>\n          </div>\n          <div class=\"form-floating mb-3\">\n            <input\n              class=\"form-control\"\n              id=\"apellidos\"\n              type=\"text\"\n              placeholder=\"Apellidos\"\n              data-sb-validations=\"required\"\n              formControlName=\"lastName\"\n            />\n            <label for=\"apellidos\">Apellidos</label>\n            <div class=\"invalid-feedback\" data-sb-feedback=\"apellidos:required\">\n              Apellidos requerido.\n            </div>\n          </div>\n          <div class=\"form-floating mb-3\">\n            <input\n              class=\"form-control\"\n              id=\"telefono\"\n              type=\"text\"\n              placeholder=\"Telefono\"\n              data-sb-validations=\"required\"\n              formControlName=\"phone\"\n              [mask]=\"'(000) 000-0000'\"\n              [showMaskTyped]=\"true\"\n            />\n            <label for=\"telefono\">Telefono</label>\n            <div class=\"invalid-feedback\" data-sb-feedback=\"telefono:required\">\n              Telefono requerido.\n            </div>\n          </div>\n          <div class=\"form-floating mb-3\">\n            <select\n              class=\"form-select\"\n              id=\"genero\"\n              aria-label=\"Genero\"\n              formControlName=\"gender\"\n            >\n              <option [value]=\"a.key\" *ngFor=\"let a of availableGender\">\n                {{ a.value }}\n              </option>\n            </select>\n            <label for=\"genero\">Guardar</label>\n          </div>\n          <div class=\"d-grid\">\n            <button\n              class=\"btn btn-primary btn-lg\"\n              id=\"submitButton\"\n              type=\"submit\"\n            >\n              Guardar\n            </button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "HomeComponent",
@@ -3122,7 +2913,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<nav class=\"navbar navbar-expand-lg bg-body-tertiary bg-primary\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-brand\" href=\"#\">{{ app.NAME }}</a>\n    <app-navbar-artist></app-navbar-artist>\n  </div>\n</nav>\n"
+            "templateData": "<nav class=\"navbar navbar-expand-lg bg-body-tertiary bg-primary\">\n  <div class=\"container-fluid\">\n    <a class=\"navbar-brand\" href=\"#\">{{ app.NAME }}</a>\n    <!--<app-navbar-artist></app-navbar-artist>-->\n  </div>\n</nav>\n"
         },
         {
             "name": "NavbarConsumerComponent",
@@ -3166,7 +2957,7 @@
         },
         {
             "name": "OnboardingComponent",
-            "id": "component-OnboardingComponent-7a003af4f0c01402440c567337616eca8c0e63aee0975e992c20fc607c37795f7789dc1600121438e89662ca4ab39ca9b088954f909ae55992354783afb1f001",
+            "id": "component-OnboardingComponent-956bea757684bf74fa1e5318553380d2a4eecdc1de3137ed5c0ef9aab6924f583a2b56317cb33078d505d90dcb48cb511e18fc1670616a9ac170c4e40e561090",
             "file": "src/app/onboarding/pages/onboarding/onboarding.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3196,7 +2987,6 @@
                 },
                 {
                     "name": "currentStep",
-                    "defaultValue": "OnboardingStepsEnum.profile",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "OnboardingStepsEnum",
@@ -3288,7 +3078,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { OnboardingStepsEnum } from '@shared/enums';\nimport { ICategory, IUser } from '@shared/models';\nimport { BWSState } from '@store/states';\nimport * as ProviderActions from '@store/actions/provider.actions';\nimport { getCategories, getUser } from '@store/selectors';\nimport { takeUntil } from 'rxjs';\nimport { DestroyHook } from '@shared/components';\n\n@Component({\n  selector: 'app-onboarding',\n  templateUrl: './onboarding.component.html',\n  styleUrls: ['./onboarding.component.scss'],\n})\nexport class OnboardingComponent extends DestroyHook {\n  user: IUser;\n  currentStep: OnboardingStepsEnum = OnboardingStepsEnum.profile;\n  categories: ICategory[];\n  constructor(private store$: Store<BWSState>, private router: Router) {\n    super();\n    this.store$.dispatch(ProviderActions.GetCategoriesAction());\n    this.store$\n      .select(getUser)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.user = data;\n        this.updateCurrentStep();\n      });\n\n    this.store$\n      .select(getCategories)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.categories = data;\n      });\n  }\n  updateCurrentStep(): void {\n    let newStep: OnboardingStepsEnum;\n    if (!this.user.artistProfile && !this.user.consumerProfile) {\n      newStep = OnboardingStepsEnum.profile;\n    } else {\n      newStep = this.user.consumerProfile\n        ? this.generateConsumerOnboardingStep()\n        : this.generateArtistOnboardingStep();\n    }\n    this.currentStep = newStep;\n    if (this.currentStep == OnboardingStepsEnum.none) {\n      if (this.user.artistProfile) {\n        this.router.navigate(['/2']);\n      } else if (this.user.consumerProfile) {\n        this.router.navigate(['/2']);\n      }\n    }\n  }\n\n  private generateConsumerOnboardingStep(): OnboardingStepsEnum {\n    let step: OnboardingStepsEnum;\n    if (!this.user.fullName || this.user.fullName === '') {\n      step = OnboardingStepsEnum.general;\n    } else {\n      step = OnboardingStepsEnum.none;\n    }\n    return step;\n  }\n  private generateArtistOnboardingStep(): OnboardingStepsEnum {\n    let step: OnboardingStepsEnum;\n    if (!this.user.fullName || this.user.fullName === '') {\n      step = OnboardingStepsEnum.general;\n    } else if (\n      !this.user.artistProfile.services ||\n      this.user.artistProfile.services.length == 0\n    ) {\n      step = OnboardingStepsEnum.services;\n    } else {\n      step = OnboardingStepsEnum.none;\n    }\n    return step;\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { OnboardingStepsEnum } from '@shared/enums';\nimport { ICategory, IUser } from '@shared/models';\nimport { BWSState } from '@store/states';\nimport * as ProviderActions from '@store/actions/provider.actions';\nimport { getCategories, getUser } from '@store/selectors';\nimport { takeUntil } from 'rxjs';\nimport { DestroyHook } from '@shared/components';\n\n@Component({\n  selector: 'app-onboarding',\n  templateUrl: './onboarding.component.html',\n  styleUrls: ['./onboarding.component.scss'],\n})\nexport class OnboardingComponent extends DestroyHook {\n  user: IUser;\n  currentStep: OnboardingStepsEnum;\n  categories: ICategory[];\n  constructor(private store$: Store<BWSState>, private router: Router) {\n    super();\n    this.store$.dispatch(ProviderActions.GetCategoriesAction());\n    this.store$\n      .select(getUser)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.user = data;\n        this.updateCurrentStep();\n      });\n\n    this.store$\n      .select(getCategories)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.categories = data;\n      });\n  }\n  updateCurrentStep(): void {\n    let newStep: OnboardingStepsEnum;\n    if (!this.user.artistProfile && !this.user.consumerProfile) {\n      newStep = OnboardingStepsEnum.profile;\n    } else {\n      newStep = this.user.consumerProfile\n        ? this.generateConsumerOnboardingStep()\n        : this.generateArtistOnboardingStep();\n    }\n    this.currentStep = newStep;\n    if (this.currentStep == OnboardingStepsEnum.none) {\n      if (this.user.artistProfile) {\n        this.router.navigate(['/2']);\n      } else if (this.user.consumerProfile) {\n        this.router.navigate(['/2']);\n      }\n    }\n  }\n\n  private generateConsumerOnboardingStep(): OnboardingStepsEnum {\n    let step: OnboardingStepsEnum;\n    if (!this.user.fullName || this.user.fullName === '') {\n      step = OnboardingStepsEnum.general;\n    } else {\n      step = OnboardingStepsEnum.none;\n    }\n    return step;\n  }\n  private generateArtistOnboardingStep(): OnboardingStepsEnum {\n    let step: OnboardingStepsEnum;\n    if (!this.user.fullName || this.user.fullName === '') {\n      step = OnboardingStepsEnum.general;\n    } else {\n      step = OnboardingStepsEnum.services;\n    }\n    //if (\n    //!this.user.artistProfile.services ||\n    //this.user.artistProfile.services.length == 0\n    //) {\n    //step = OnboardingStepsEnum.services;\n    //} else {\n    //step = OnboardingStepsEnum.none;\n    //}\n    return step;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3339,87 +3129,7 @@
                 ]
             },
             "extends": "DestroyHook",
-            "templateData": "<app-navbar></app-navbar>\n<div\n  class=\"container-fliuid page d-flex justify-content-center align-items-center\"\n>\n  <div class=\"col-12\" [ngSwitch]=\"currentStep\">\n    <app-profile-form\n      *ngSwitchCase=\"'profile'\"\n      [user]=\"user\"\n    ></app-profile-form>\n    <app-general-form\n      [user]=\"user\"\n      *ngSwitchCase=\"'general'\"\n    ></app-general-form>\n    <app-services-form\n      [user]=\"user\"\n      *ngSwitchCase=\"'services'\"\n    ></app-services-form>\n    <div *ngSwitchDefault>Onboarding Page</div>\n  </div>\n</div>\n"
-        },
-        {
-            "name": "PageComponent",
-            "id": "component-PageComponent-7126d8c2607c946741c651482413b43feb72b2d63cac9d3ac173fde206a5e635eb4cdbf7ca7ac9327c7d4d05cf7ef619144c34c11609ad677081d0ee4e855064",
-            "file": "src/stories/page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-page",
-            "styleUrls": [
-                "./page.css"
-            ],
-            "styles": [],
-            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "User | null",
-                    "optional": false,
-                    "description": "",
-                    "line": 64
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "doCreateAccount",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 74,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogin",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 70,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogout",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 66,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nsection h2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nsection p {\n  margin: 1em 0;\n}\n\nsection a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nsection ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nsection li {\n  margin-bottom: 8px;\n}\n\nsection .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\nsection .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\nsection .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\nsection .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
-                    "styleUrl": "./page.css"
-                }
-            ],
-            "stylesData": ""
+            "templateData": "<div class=\"container-fliuid page\">\n  <app-navbar></app-navbar>\n  <div class=\"col-12\" [ngSwitch]=\"currentStep\">\n    <app-profile-form\n      *ngSwitchCase=\"'profile'\"\n      [user]=\"user\"\n    ></app-profile-form>\n    <app-general-form\n      [user]=\"user\"\n      *ngSwitchCase=\"'general'\"\n    ></app-general-form>\n    <app-services-form\n      [user]=\"user\"\n      *ngSwitchCase=\"'services'\"\n    ></app-services-form>\n    <div *ngSwitchDefault>Onboarding Page</div>\n  </div>\n</div>\n"
         },
         {
             "name": "ProfileFormComponent",
@@ -3559,11 +3269,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"d-flex justify-content-around\">\n  <button class=\"card\" (click)=\"createConsumerProfile()\">\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">Busco Servicios</h5>\n      <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>\n      <p class=\"card-text\">\n        Some quick example text to build on the card title and make up the bulk\n        of the card's content.\n      </p>\n    </div>\n  </button>\n\n  <button class=\"card\" (click)=\"createArtistProfile()\">\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">Brindo Servicios</h5>\n      <h6 class=\"card-subtitle mb-2 text-muted\">Card subtitle</h6>\n      <p class=\"card-text\">\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n      </p>\n    </div>\n  </button>\n</div>\n"
+            "templateData": "<div class=\"page-content d-flex justify-content-around align-items-center\">\n  <div class=\"card\" style=\"width: 18rem\">\n    <img\n      src=\"https://aceroprime.com/wp-content/plugins/widgetkit/assets/images/content-placeholder.svg\"\n      class=\"card-img-top\"\n      alt=\"...\"\n    />\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">Brindo Servicios</h5>\n      <p class=\"card-text\">\n        Soy un artista experimentado que brinda servicios de estetica.\n      </p>\n      <div class=\"w-100 text-center\">\n        <button\n          type=\"button\"\n          (click)=\"createArtistProfile()\"\n          class=\"btn btn-primary\"\n        >\n          Seleccionar\n        </button>\n      </div>\n    </div>\n  </div>\n  <div class=\"card\" style=\"width: 18rem\">\n    <img\n      src=\"https://aceroprime.com/wp-content/plugins/widgetkit/assets/images/content-placeholder.svg\"\n      class=\"card-img-top\"\n      alt=\"...\"\n    />\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">Busco Servicios</h5>\n      <p class=\"card-text\">Frecuentemente busco servicios de estetica.</p>\n      <div class=\"w-100 text-center\">\n        <button\n          type=\"button\"\n          (click)=\"createConsumerProfile()\"\n          class=\"btn btn-primary\"\n        >\n          Seleccionar\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "ServicesFormComponent",
-            "id": "component-ServicesFormComponent-14ac782ec6076a7366b2ae7aa1bdba0cbec8997d8da7d8a34596a20706545fa8a9d059603e2bb887ff77ce62ea4e7b278b5b2999785745c0097c08225e384b64",
+            "id": "component-ServicesFormComponent-5a769be38a016cfdc22b36b81dbf3eafca413d4facd9a889cc1d6ff061c439c808ee1147ea71df58c7619ef6ad11382d5332af08769f55b3f7496385ed6d6c2b",
             "file": "src/app/onboarding/components/services-form/services-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3608,7 +3318,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 36
                 },
                 {
                     "name": "form",
@@ -3617,7 +3327,7 @@
                     "type": "FormGroup",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 34
                 },
                 {
                     "name": "services",
@@ -3627,6 +3337,15 @@
                     "optional": false,
                     "description": "",
                     "line": 31
+                },
+                {
+                    "name": "userServices",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
                 },
                 {
                     "name": "unsubscribe$",
@@ -3652,7 +3371,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 73,
+                    "line": 75,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3662,7 +3381,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 62,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3672,7 +3391,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3689,7 +3408,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 85,
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3717,7 +3436,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 72,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3753,7 +3472,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport {\n  FormBuilder,\n  FormControl,\n  FormGroup,\n  Validators,\n} from '@angular/forms';\nimport { NgbModal } from '@ng-bootstrap/ng-bootstrap';\nimport { Store } from '@ngrx/store';\nimport { DestroyHook } from '@shared/components';\nimport { ICategory, IService, IUser } from '@shared/models';\nimport {\n  CreateArtistServiceAction,\n  GetServicesAction,\n  SetOpenedModalAction,\n} from '@store/actions';\nimport { getCategories, getServices } from '@store/selectors';\nimport { BWSState } from '@store/states';\nimport { takeUntil } from 'rxjs';\n\n@Component({\n  selector: 'app-services-form',\n  templateUrl: './services-form.component.html',\n  styleUrls: ['./services-form.component.scss'],\n})\nexport class ServicesFormComponent extends DestroyHook implements OnInit {\n  @Input()\n  user: IUser;\n  categories: ICategory[];\n\n  services: IService[];\n  form: FormGroup;\n\n  closeResult = '';\n  constructor(\n    private modalService: NgbModal,\n    private store$: Store<BWSState>,\n    private fb: FormBuilder\n  ) {\n    super();\n  }\n\n  ngOnInit(): void {\n    this.initializeForm();\n\n    this.store$\n      .select(getCategories)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.categories = data;\n      });\n\n    this.store$\n      .select(getServices)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.services = data;\n        if (this.services && this.services.length > 0)\n          this.form.patchValue({ service: this.services[0].publicId });\n      });\n  }\n  initializeForm(): void {\n    this.form = this.fb.group({\n      category: new FormControl(0, [Validators.required]),\n      service: new FormControl(null, [Validators.required]),\n      cost: new FormControl(0, [Validators.required, Validators.min(1)]),\n    });\n  }\n\n  selectCategory(value: any): void {\n    this.store$.dispatch(GetServicesAction({ category: value }));\n  }\n  createService(): void {\n    if (this.form.valid) {\n      this.store$.dispatch(\n        CreateArtistServiceAction({\n          userId: this.user.publicId,\n          serviceId: this.form.value.service,\n          cost: this.form.value.cost,\n        })\n      );\n    }\n  }\n\n  open(content) {\n    const modal = this.modalService.open(content, {\n      ariaLabelledBy: 'modal-basic-title',\n    });\n    this.store$.dispatch(SetOpenedModalAction());\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport {\n  FormBuilder,\n  FormControl,\n  FormGroup,\n  Validators,\n} from '@angular/forms';\nimport { NgbModal } from '@ng-bootstrap/ng-bootstrap';\nimport { Store } from '@ngrx/store';\nimport { DestroyHook } from '@shared/components';\nimport { ICategory, IService, IUser } from '@shared/models';\nimport {\n  CreateArtistServiceAction,\n  GetServicesAction,\n  SetOpenedModalAction,\n} from '@store/actions';\nimport { getCategories, getServices } from '@store/selectors';\nimport { BWSState } from '@store/states';\nimport { takeUntil } from 'rxjs';\n\n@Component({\n  selector: 'app-services-form',\n  templateUrl: './services-form.component.html',\n  styleUrls: ['./services-form.component.scss'],\n})\nexport class ServicesFormComponent extends DestroyHook implements OnInit {\n  @Input()\n  user: IUser;\n  categories: ICategory[];\n\n  services: IService[];\n\n  userServices: any;\n  form: FormGroup;\n\n  closeResult = '';\n  constructor(\n    private modalService: NgbModal,\n    private store$: Store<BWSState>,\n    private fb: FormBuilder\n  ) {\n    super();\n    //return this.user?.artistProfile?.services || [];\n  }\n  ngOnInit(): void {\n    this.initializeForm();\n\n    this.store$\n      .select(getCategories)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.categories = data;\n      });\n\n    this.store$\n      .select(getServices)\n      .pipe(takeUntil(this.unsubscribe$))\n      .subscribe((data) => {\n        this.services = data;\n        if (this.services && this.services.length > 0)\n          this.form.patchValue({ service: this.services[0].publicId });\n      });\n  }\n  initializeForm(): void {\n    this.form = this.fb.group({\n      category: new FormControl(0, [Validators.required]),\n      service: new FormControl(null, [Validators.required]),\n      cost: new FormControl(0, [Validators.required, Validators.min(1)]),\n    });\n  }\n\n  selectCategory(value: any): void {\n    this.store$.dispatch(GetServicesAction({ category: value }));\n  }\n  createService(): void {\n    if (this.form.valid) {\n      this.store$.dispatch(\n        CreateArtistServiceAction({\n          userId: this.user.publicId,\n          serviceId: this.form.value.service,\n          cost: this.form.value.cost,\n        })\n      );\n    }\n  }\n\n  open(content) {\n    const modal = this.modalService.open(content, {\n      ariaLabelledBy: 'modal-basic-title',\n    });\n    this.store$.dispatch(SetOpenedModalAction());\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3787,7 +3506,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 34,
+                "line": 36,
                 "jsdoctags": [
                     {
                         "name": "modalService",
@@ -3822,7 +3541,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"container-fluid w-100\">\n  <div class=\"col-12 d-flex justify-content-center align-items-center\">\n    <div class=\"card w-50\">\n      <div class=\"card-body\">\n        aqui se ven los services que ya agrego O que no tiene servicios aun\n      </div>\n      <div class=\"card-footer\">\n        <button class=\"btn btn-lg btn-outline-primary\" (click)=\"open(content)\">\n          Launch demo modal\n        </button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<ng-template #content let-modal>\n  <form [formGroup]=\"form\" (submit)=\"createService()\">\n    <div class=\"modal-header\">\n      <h4 class=\"modal-title\" id=\"modal-basic-title\">Profile update</h4>\n      <button\n        type=\"button\"\n        class=\"btn-close\"\n        aria-label=\"Close\"\n        (click)=\"modal.dismiss('Cross click')\"\n      ></button>\n    </div>\n    <div class=\"modal-body\">\n      <div class=\"form-floating mb-3\">\n        <select\n          class=\"form-select\"\n          (ngModelChange)=\"selectCategory($event)\"\n          id=\"categoria\"\n          aria-label=\"Categoria\"\n          formControlName=\"category\"\n        >\n          <option value=\"0\">Selecciona una Categoria</option>\n          <option [value]=\"c.publicId\" *ngFor=\"let c of categories\">\n            {{ c.displayName }}\n          </option>\n        </select>\n        <label for=\"categoria\">Categoria</label>\n      </div>\n      <div class=\"form-floating mb-3\">\n        <select\n          class=\"form-select\"\n          id=\"servicio\"\n          aria-label=\"Servicio\"\n          formControlName=\"service\"\n          [disabled]=\"true\"\n        >\n          <option [value]=\"c.publicId\" *ngFor=\"let c of services\">\n            {{ c.displayName }}\n          </option>\n        </select>\n        <label for=\"servicio\">Servicio</label>\n      </div>\n      <div class=\"form-floating mb-3\">\n        <input\n          class=\"form-control\"\n          id=\"precio\"\n          type=\"number\"\n          placeholder=\"Precio\"\n          data-sb-validations=\"required\"\n          formControlName=\"cost\"\n        />\n        <label for=\"precio\">Precio</label>\n        <div class=\"invalid-feedback\" data-sb-feedback=\"precio:required\">\n          Precio is required.\n        </div>\n      </div>\n      <div class=\"d-none\" id=\"submitSuccessMessage\">\n        <div class=\"text-center mb-3\">\n          <div class=\"fw-bolder\">Form submission successful!</div>\n          <p>To activate this form, sign up at</p>\n          <a href=\"https://startbootstrap.com/solution/contact-forms\"\n            >https://startbootstrap.com/solution/contact-forms</a\n          >\n        </div>\n      </div>\n      <div class=\"d-none\" id=\"submitErrorMessage\">\n        <div class=\"text-center text-danger mb-3\">Error sending message!</div>\n      </div>\n      <div class=\"d-grid\">\n        <button class=\"btn btn-primary btn-lg\" id=\"submitButton\" type=\"submit\">\n          Guardar\n        </button>\n      </div>\n    </div>\n    <!--<div class=\"modal-footer\">-->\n    <!--<button-->\n    <!--type=\"submit\"-->\n    <!--class=\"btn btn-outline-dark\"-->\n    <!--(click)=\"modal.close('Save click')\"-->\n    <!-->-->\n    <!--Save-->\n    <!--</button>-->\n    <!--</div>-->\n  </form>\n</ng-template>\n"
+            "templateData": "<div class=\"container-fluid w-100\">\n  <div class=\"col-12 d-flex justify-content-center align-items-center\">\n    <div\n      *ngIf=\"\n        !user.artistProfile.services || user.artistProfile.services.length === 0\n      \"\n      class=\"d-flex flex-column justify-content-center align-items-center\"\n    >\n      <p>aqui</p>\n      <button (click)=\"open(content)\" class=\"btn btn-primary\">Agregar</button>\n    </div>\n    <div\n      *ngIf=\"\n        user.artistProfile.services && user.artistProfile.services.length > 0\n      \"\n    >\n      <table class=\"table table-striped w-50\">\n        <thead>\n          <tr>\n            <th scope=\"col\">Service</th>\n            <th scope=\"col\">Cost</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let s of user.artistProfile?.services; index as i\">\n            <td>\n              {{ s | json }}\n            </td>\n            <td>otro</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--<div class=\"card w-50\">-->\n    <!--<ul class=\"list-group\">-->\n    <!--<li class=\"list-group-item\">An item</li>-->\n    <!--<li class=\"list-group-item\">A second item</li>-->\n    <!--<li class=\"list-group-item\">A third item</li>-->\n    <!--<li class=\"list-group-item\">A fourth item</li>-->\n    <!--<li class=\"list-group-item\">And a fifth one</li>-->\n    <!--</ul>-->\n    <!--<div class=\"card-footer\">-->\n    <!--<button class=\"btn btn-lg btn-outline-primary\" (click)=\"open(content)\">-->\n    <!--Launch demo modal-->\n    <!--</button>-->\n    <!--</div>-->\n    <!--</div>-->\n  </div>\n</div>\n\n<ng-template #content let-modal>\n  <form [formGroup]=\"form\" (submit)=\"createService()\">\n    <div class=\"modal-header\">\n      <h4 class=\"modal-title\" id=\"modal-basic-title\">Profile update</h4>\n      <button\n        type=\"button\"\n        class=\"btn-close\"\n        aria-label=\"Close\"\n        (click)=\"modal.dismiss('Cross click')\"\n      ></button>\n    </div>\n    <div class=\"modal-body\">\n      <div class=\"form-floating mb-3\">\n        <select\n          class=\"form-select\"\n          (ngModelChange)=\"selectCategory($event)\"\n          id=\"categoria\"\n          aria-label=\"Categoria\"\n          formControlName=\"category\"\n        >\n          <option value=\"0\">Selecciona una Categoria</option>\n          <option [value]=\"c.publicId\" *ngFor=\"let c of categories\">\n            {{ c.displayName }}\n          </option>\n        </select>\n        <label for=\"categoria\">Categoria</label>\n      </div>\n      <div class=\"form-floating mb-3\">\n        <select\n          class=\"form-select\"\n          id=\"servicio\"\n          aria-label=\"Servicio\"\n          formControlName=\"service\"\n          [disabled]=\"true\"\n        >\n          <option [value]=\"c.publicId\" *ngFor=\"let c of services\">\n            {{ c.displayName }}\n          </option>\n        </select>\n        <label for=\"servicio\">Servicio</label>\n      </div>\n      <div class=\"form-floating mb-3\">\n        <input\n          class=\"form-control\"\n          id=\"precio\"\n          type=\"number\"\n          placeholder=\"Precio\"\n          data-sb-validations=\"required\"\n          formControlName=\"cost\"\n        />\n        <label for=\"precio\">Precio</label>\n        <div class=\"invalid-feedback\" data-sb-feedback=\"precio:required\">\n          Precio is required.\n        </div>\n      </div>\n      <div class=\"d-none\" id=\"submitSuccessMessage\">\n        <div class=\"text-center mb-3\">\n          <div class=\"fw-bolder\">Form submission successful!</div>\n          <p>To activate this form, sign up at</p>\n          <a href=\"https://startbootstrap.com/solution/contact-forms\"\n            >https://startbootstrap.com/solution/contact-forms</a\n          >\n        </div>\n      </div>\n      <div class=\"d-none\" id=\"submitErrorMessage\">\n        <div class=\"text-center text-danger mb-3\">Error sending message!</div>\n      </div>\n      <div class=\"d-grid\">\n        <button class=\"btn btn-primary btn-lg\" id=\"submitButton\" type=\"submit\">\n          Guardar\n        </button>\n      </div>\n    </div>\n    <!--<div class=\"modal-footer\">-->\n    <!--<button-->\n    <!--type=\"submit\"-->\n    <!--class=\"btn btn-outline-dark\"-->\n    <!--(click)=\"modal.close('Save click')\"-->\n    <!-->-->\n    <!--Save-->\n    <!--</button>-->\n    <!--</div>-->\n  </form>\n</ng-template>\n"
         },
         {
             "name": "SigninComponent",
@@ -5102,56 +4821,6 @@
                 "defaultValue": "{\n  user: null,\n}"
             },
             {
-                "name": "Large",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedIn",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedIn",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
                 "name": "Login",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -5208,16 +4877,6 @@
                 "file": "src/app/onboarding/pages/onboarding/onboarding.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "() => ({\n  props: {},\n})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -5270,16 +4929,6 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "createAction(\n  UI_ACTIONS.REMOVE_OPENED_MODAL\n)"
-            },
-            {
-                "name": "Secondary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "ServicesForm",
@@ -5352,44 +5001,14 @@
                 "defaultValue": "createAction(\n  AUTH_ACTIONS.SIGNIN_SUCCESS,\n  props<{ session: ISession }>()\n)"
             },
             {
-                "name": "Small",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Button.stories.ts",
+                "file": "src/app/onboarding/pages/onboarding/onboarding.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<Button>",
-                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Page>",
-                "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                "type": "Story",
+                "defaultValue": "(args) => ({\n  props: args,\n})"
             },
             {
                 "name": "UpdateUserAction",
@@ -6533,122 +6152,6 @@
                     "defaultValue": "(state: BWSState) => state.user"
                 }
             ],
-            "src/stories/Button.stories.ts": [
-                {
-                    "name": "Large",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Secondary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Small",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<Button>",
-                    "defaultValue": "(args: Button) => ({\n  props: args,\n})"
-                }
-            ],
-            "src/stories/Header.stories.ts": [
-                {
-                    "name": "LoggedIn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Header.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<Header>",
-                    "defaultValue": "(args: Header) => ({\n  props: args,\n})"
-                }
-            ],
-            "src/stories/Page.stories.ts": [
-                {
-                    "name": "LoggedIn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<Page>",
-                    "defaultValue": "(args: Page) => ({\n  props: args,\n})"
-                }
-            ],
             "src/app/auth/pages/login/login.stories.ts": [
                 {
                     "name": "Login",
@@ -6743,8 +6246,18 @@
                     "file": "src/app/onboarding/pages/onboarding/onboarding.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/onboarding/pages/onboarding/onboarding.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "() => ({\n  props: {},\n})"
+                    "defaultValue": "(args) => ({\n  props: args,\n})"
                 }
             ],
             "src/app/onboarding/components/profile-form/profile-form.stories.ts": [
@@ -7975,7 +7488,7 @@
                 "linktype": "component",
                 "name": "ServicesFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
@@ -8003,6 +7516,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Onboarding",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/onboarding/pages/onboarding/onboarding.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -8695,152 +8218,6 @@
                 "name": "providers",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Large",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Secondary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Small",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Header.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedIn",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "LoggedOut",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/Page.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/User.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "User",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/button.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
-            },
-            {
-                "filePath": "src/stories/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
                 "status": "low"
             }
         ]

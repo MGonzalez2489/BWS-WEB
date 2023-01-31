@@ -1,50 +1,34 @@
-<div class="container-fluid w-100">
-  <div class="col-12 d-flex justify-content-center align-items-center">
-    <div
-      *ngIf="
-        !user.artistProfile.services || user.artistProfile.services.length === 0
-      "
-      class="d-flex flex-column justify-content-center align-items-center"
-    >
-      <p>aqui</p>
-      <button (click)="open(content)" class="btn btn-primary">Agregar</button>
+<div class="page-content w-100">
+  <div
+    class="col-12 d-flex flex-column justify-content-center align-items-center"
+  >
+    <div class="m-5">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
-    <div
-      *ngIf="
-        user.artistProfile.services && user.artistProfile.services.length > 0
-      "
-    >
-      <table class="table table-striped w-50">
-        <thead>
-          <tr>
-            <th scope="col">Service</th>
-            <th scope="col">Cost</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let s of user.artistProfile?.services; index as i">
-            <td>
-              {{ s | json }}
-            </td>
-            <td>otro</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card w-50 border-0">
+      <div class="card-header bg-white d-flex justify-content-between">
+        <span>Servicios Registrados</span>
+        <button (click)="open(content)" class="btn btn-primary btn-sm">Agregar</button>
+      </div>
+      <div class="card-body px-0 pb-0">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Service</th>
+              <th scope="col">Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of user.artistProfile?.services; index as i">
+              <td>
+                {{ s.service }}
+              </td>
+              <td>{{ s.cost | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <!--<div class="card w-50">-->
-    <!--<ul class="list-group">-->
-    <!--<li class="list-group-item">An item</li>-->
-    <!--<li class="list-group-item">A second item</li>-->
-    <!--<li class="list-group-item">A third item</li>-->
-    <!--<li class="list-group-item">A fourth item</li>-->
-    <!--<li class="list-group-item">And a fifth one</li>-->
-    <!--</ul>-->
-    <!--<div class="card-footer">-->
-    <!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">-->
-    <!--Launch demo modal-->
-    <!--</button>-->
-    <!--</div>-->
-    <!--</div>-->
   </div>
 </div>
 
@@ -121,14 +105,5 @@
         </button>
       </div>
     </div>
-    <!--<div class="modal-footer">-->
-    <!--<button-->
-    <!--type="submit"-->
-    <!--class="btn btn-outline-dark"-->
-    <!--(click)="modal.close('Save click')"-->
-    <!-->-->
-    <!--Save-->
-    <!--</button>-->
-    <!--</div>-->
   </form>
 </ng-template>
