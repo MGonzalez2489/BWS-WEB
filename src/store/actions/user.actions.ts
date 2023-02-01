@@ -18,6 +18,10 @@ export enum USER_ACTIONS {
   CREATE_ARTIST_SERVICE_SUCCESS = '[USER] Create Artist Service Success',
   CREATE_ARTIST_SERVICE_FAIL = '[USER] Create Artist Service Fail',
 
+  DELETE_ARTIST_SERVICE = '[USER] Delete Artist Service',
+  DELETE_ARTIST_SERVICE_SUCCESS = '[USER] Delete Artist Service Success',
+  DELETE_ARTIST_SERVICE_FAIL = '[USER] Delete Artist Service Fail',
+
   //CONSUMER
   CREATE_USER_CONSUMER_PROFILE = '[USER] Create User Consumer Profile',
   CREATE_USER_CONSUMER_PROFILE_SUCCESS = '[USER] Create User Consumer Profile Success',
@@ -88,5 +92,20 @@ export const CreateArtistServiceSuccessAction = createAction(
 
 export const CreateArtistServiceFailAction = createAction(
   USER_ACTIONS.CREATE_ARTIST_SERVICE_FAIL,
+  props<{ payload: any }>()
+);
+
+export const DeleteArtistServiceAction = createAction(
+  USER_ACTIONS.DELETE_ARTIST_SERVICE,
+  props<{ serviceId: string }>()
+);
+
+export const DeleteArtistServiceSuccessAction = createAction(
+  USER_ACTIONS.DELETE_ARTIST_SERVICE_SUCCESS,
+  props<{ response: boolean }>()
+);
+
+export const DeleteArtistServiceFailAction = createAction(
+  USER_ACTIONS.DELETE_ARTIST_SERVICE_FAIL,
   props<{ payload: any }>()
 );

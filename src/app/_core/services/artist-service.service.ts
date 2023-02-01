@@ -17,4 +17,8 @@ export class ArtistServicesService {
       cost,
     });
   }
+
+  deleteArtistService(serviceId): Observable<ResultModel<boolean>> {
+    return this.requestService.delete(`artist/services/${serviceId}/remove`);
+  }
 }

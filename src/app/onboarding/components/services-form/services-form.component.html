@@ -16,6 +16,7 @@
             <tr>
               <th scope="col">Service</th>
               <th scope="col">Cost</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +25,9 @@
                 {{ s.service }}
               </td>
               <td>{{ s.cost | currency }}</td>
+              <td>
+                  <button class="btn btn-outline-danger btn-sm">D</button>
+              </td>
             </tr>
           </tbody>
         </table>

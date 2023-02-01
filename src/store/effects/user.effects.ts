@@ -130,4 +130,28 @@ export class UserEffects {
       )
     )
   );
+
+  deleteArtistService$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.DeleteArtistServiceAction),
+      mergeMap((params) =>
+        this.artistServicesService.deleteArtistService(params.serviceId).pipe(
+          map((response: ResultModel<boolean>) => {
+            if (!response.isSuccess) {
+              return UserActions.DeleteArtistServiceFailAction({
+                payload: response.message,
+              });
+            }
+            //this.store.dispatch(RemoveOpenedModalAction());
+            return UserActions.DeleteArtistServiceSuccessAction({
+              response: response.model,
+            });
+          }),
+          catchError((error) =>
+            of(UserActions.DeleteArtistServiceFailAction({ payload: error }))
+          )
+        )
+      )
+    )
+  );
 }
