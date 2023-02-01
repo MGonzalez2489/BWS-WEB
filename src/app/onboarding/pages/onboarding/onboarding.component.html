@@ -1,0 +1,18 @@
+<div class="container-fliuid page">
+  <app-navbar></app-navbar>
+  <div class="col-12" [ngSwitch]="currentStep">
+    <app-profile-form
+      *ngSwitchCase="'profile'"
+      [user]="user"
+    ></app-profile-form>
+    <app-general-form
+      [user]="user"
+      *ngSwitchCase="'general'"
+    ></app-general-form>
+    <app-services-form
+      [user]="user"
+      *ngSwitchCase="'services'"
+    ></app-services-form>
+    <div *ngSwitchDefault>Onboarding Page</div>
+  </div>
+</div>

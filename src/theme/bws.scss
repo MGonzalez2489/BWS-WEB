@@ -1,0 +1,14 @@
+body {
+  height: calc(100vh);
+}
+
+.page {
+  height: 100vh;
+}
+.page-content {
+  height: calc(100vh - 56px);
+}
+
+.invalid-feedback {
+  display: unset;
+}

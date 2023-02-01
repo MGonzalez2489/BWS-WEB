@@ -1,0 +1,91 @@
+<div class="container-fluid w-100">
+  <div
+    class="col-12 d-flex flex-column justify-content-center align-items-center"
+  >
+    <div class="m-5">
+      <h4>Cuentanos mas sobre ti!</h4>
+      <p>
+        Queremos ofrecerte la mejor experiencia posible en tu
+        <span class="text-info" *ngIf="user.consumerProfile"
+          >busqueda de servicios</span
+        >
+        <span class="text-info" *ngIf="user.artistProfile"
+          >camino como artista</span
+        >.
+      </p>
+    </div>
+    <div class="card w-50 border-0">
+      <div class="card-body">
+        <form (submit)="submit()" [formGroup]="userForm">
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              id="nombre"
+              type="text"
+              placeholder="Nombre"
+              data-sb-validations="required"
+              autofocus
+              formControlName="firstName"
+            />
+            <label for="nombre">Nombre</label>
+            <div class="invalid-feedback" data-sb-feedback="nombre:required">
+              Nombre requerido.
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              id="apellidos"
+              type="text"
+              placeholder="Apellidos"
+              data-sb-validations="required"
+              formControlName="lastName"
+            />
+            <label for="apellidos">Apellidos</label>
+            <div class="invalid-feedback" data-sb-feedback="apellidos:required">
+              Apellidos requerido.
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              class="form-control"
+              id="telefono"
+              type="text"
+              placeholder="Telefono"
+              data-sb-validations="required"
+              formControlName="phone"
+              [mask]="'(000) 000-0000'"
+              [showMaskTyped]="true"
+            />
+            <label for="telefono">Telefono</label>
+            <div class="invalid-feedback" data-sb-feedback="telefono:required">
+              Telefono requerido.
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <select
+              class="form-select"
+              id="genero"
+              aria-label="Genero"
+              formControlName="gender"
+            >
+              <option [value]="a.key" *ngFor="let a of availableGender">
+                {{ a.value }}
+              </option>
+            </select>
+            <label for="genero">Guardar</label>
+          </div>
+          <div class="d-grid">
+            <button
+              class="btn btn-primary btn-lg"
+              id="submitButton"
+              type="submit"
+            >
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,21 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: 'onboarding',
+    loadChildren: () =>
+      import('./onboarding/onboarding.module').then((m) => m.OnboardingModule),
+  },
+  {
+    path: '1',
+    loadChildren: () =>
+      import('./consumer/consumer.module').then((m) => m.ConsumerModule),
+  },
+  {
+    path: '2',
+    loadChildren: () =>
+      import('./artist/artist.module').then((m) => m.ArtistModule),
+  },
 ];
 
 @NgModule({
