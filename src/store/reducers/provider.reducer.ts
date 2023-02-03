@@ -1,10 +1,17 @@
 import { on } from '@ngrx/store';
+import {
+  GetCategoriesAction,
+  GetCategoriesFailAction,
+  GetCategoriesSuccessAction,
+  GetServicesAction,
+  GetServicesFailAction,
+  GetServicesSuccessAction,
+} from '@store/actions/provider.actions';
 import { FEATURE_NAME } from '@store/constants';
 import { ProviderState } from '@store/states';
-import { createRehydrateReducer } from '.';
-import * as ProviderActions from '@store/actions/provider.actions';
+import { createRehydrateReducer } from './_rehidrateReducer';
 
-export const initialState: ProviderState = {
+const initialState: ProviderState = {
   categories: [],
   services: [],
 };
@@ -12,37 +19,36 @@ export const initialState: ProviderState = {
 const _providerReducer = createRehydrateReducer(
   FEATURE_NAME.PROVIDER,
   initialState,
-  on(ProviderActions.GetServicesAction, (state, { category }) => {
+  on(GetServicesAction, (state) => {
     return {
       ...state,
     };
   }),
-  on(ProviderActions.GetServicesSuccessAction, (state, { services }) => {
+  on(GetServicesSuccessAction, (state, { services }) => {
     return {
       ...state,
       services,
     };
   }),
-
-  on(ProviderActions.GetServicesFailAction, (state, { payload }) => {
+  on(GetServicesFailAction, (state) => {
     return {
       ...state,
     };
   }),
 
   //CATEGORIES
-  on(ProviderActions.GetCategoriesAction, (state) => {
+  on(GetCategoriesAction, (state) => {
     return {
       ...state,
     };
   }),
-  on(ProviderActions.GetCategoriesSuccessAction, (state, { categories }) => {
+  on(GetCategoriesSuccessAction, (state, { categories }) => {
     return {
       ...state,
       categories,
     };
   }),
-  on(ProviderActions.GetCategoriesFailAction, (state, { payload }) => {
+  on(GetCategoriesFailAction, (state) => {
     return {
       ...state,
     };

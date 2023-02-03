@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getLastError } from '@store/selectors';
-import { BWSState } from '@store/states';
+import { selectError } from '@store/selectors';
+import { AppState } from '@store/states/app.state';
 
 @Component({
   standalone: true,
@@ -12,6 +12,6 @@ import { BWSState } from '@store/states';
   styleUrls: ['./error-message.component.scss'],
 })
 export class ErrorMessageComponent {
-  lastMessage$ = this.store$.select(getLastError);
-  constructor(private store$: Store<BWSState>) {}
+  lastMessage$ = this.store$.select(selectError);
+  constructor(private store$: Store<AppState>) {}
 }

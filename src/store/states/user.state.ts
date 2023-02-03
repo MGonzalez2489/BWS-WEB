@@ -1,5 +1,7 @@
+import { UserTypeEnum } from '@shared/enums';
 import { IUser } from '@shared/models';
 
 export interface UserState {
-  user: IUser | null;
+  user: IUser;
+  userType: UserTypeEnum;
 }

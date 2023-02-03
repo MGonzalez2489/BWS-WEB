@@ -8,16 +8,22 @@ import {
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment';
 import { Store } from '@ngrx/store';
-import { BWSState } from '@store/states';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { DestroyHook } from '@shared/components';
+import { selectToken } from '@store/selectors';
+import { AppState } from '@store/states/app.state';
+import { Observable, of, takeUntil, throwError } from 'rxjs';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor {
+export class JwtInterceptor extends DestroyHook implements HttpInterceptor {
   token: string;
-  constructor(private store: Store<BWSState>) {
-    this.store.select('auth').subscribe((data) => {
-      this.token = data.token;
-    });
+  constructor(private store: Store<AppState>) {
+    super();
+    this.store
+      .select(selectToken)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((token) => {
+        this.token = token;
+      });
   }
 
   intercept(

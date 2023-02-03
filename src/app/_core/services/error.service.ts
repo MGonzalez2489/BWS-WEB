@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ResultListModel, ResultModel } from '@shared/models';
-import { BWSState } from '@store/states';
-import * as ErrorActions from '@store/actions/error.actions';
+import * as UiActions from '@store/actions/ui.actions';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AppState } from '@store/states/app.state';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorService {
-  constructor(private store: Store<BWSState>) {}
+  existingError: boolean;
+  constructor(private store: Store<AppState>) {}
 
   setError(
     error: ResultModel<any> | ResultListModel<any> | string | HttpErrorResponse
@@ -21,9 +22,13 @@ export class ErrorService {
 
     errorMessage = errorMessage.replace(/^"(.+(?="$))"$/, '$1');
 
-    this.store.dispatch(ErrorActions.SetErrorAction({ error: errorMessage }));
+    this.store.dispatch(UiActions.SetErrorAction({ error: errorMessage }));
+    this.existingError = true;
   }
   cleanError() {
-    this.store.dispatch(ErrorActions.CleanErrorAction());
+    if (this.existingError) {
+      this.store.dispatch(UiActions.CleanErrorAction());
+      this.existingError = false;
+    }
   }
 }

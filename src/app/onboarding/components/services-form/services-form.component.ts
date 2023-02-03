@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -9,13 +9,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DestroyHook } from '@shared/components';
 import { ICategory, IService, IUser } from '@shared/models';
-import {
-  CreateArtistServiceAction,
-  GetServicesAction,
-  SetOpenedModalAction,
-} from '@store/actions';
-import { getCategories, getServices } from '@store/selectors';
-import { BWSState } from '@store/states';
+import { CreateArtistServiceAction } from '@store/actions/artist-services.actions';
+import { GetServicesAction } from '@store/actions/provider.actions';
+import { SetOpenedModalAction } from '@store/actions/ui.actions';
+import { selectCategories, selectServices } from '@store/selectors';
+import { AppState } from '@store/states/app.state';
 import { takeUntil } from 'rxjs';
 
 @Component({
@@ -26,17 +24,19 @@ import { takeUntil } from 'rxjs';
 export class ServicesFormComponent extends DestroyHook implements OnInit {
   @Input()
   user: IUser;
+
+  @Output()
+  finishOnboarding = new EventEmitter<true>();
+
   categories: ICategory[];
-
   services: IService[];
-
   userServices: any;
   form: FormGroup;
 
   closeResult = '';
   constructor(
     private modalService: NgbModal,
-    private store$: Store<BWSState>,
+    private store$: Store<AppState>,
     private fb: FormBuilder
   ) {
     super();
@@ -46,14 +46,14 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
     this.initializeForm();
 
     this.store$
-      .select(getCategories)
+      .select(selectCategories)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data) => {
         this.categories = data;
       });
 
     this.store$
-      .select(getServices)
+      .select(selectServices)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data) => {
         this.services = data;
@@ -83,9 +83,12 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
       );
     }
   }
+  finishOnboardingFn(): void {
+    this.finishOnboarding.emit(true);
+  }
 
   open(content) {
-    const modal = this.modalService.open(content, {
+    this.modalService.open(content, {
       ariaLabelledBy: 'modal-basic-title',
     });
     this.store$.dispatch(SetOpenedModalAction());

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BWSFormGroup } from '@core/classes';
 import { Store } from '@ngrx/store';
-import { LoginAction } from '@store/actions';
-import { BWSState } from '@store/states';
+import { LoginAction } from '@store/actions/auth.actions';
+import { AppState } from '@store/states/app.state';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { BWSState } from '@store/states';
 })
 export class LoginComponent {
   loginForm: BWSFormGroup;
-  constructor(private store: Store<BWSState>, private fb: FormBuilder) {
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {
     this.initializeForm();
   }
   get form() {

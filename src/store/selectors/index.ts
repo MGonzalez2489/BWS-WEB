@@ -1,3 +1,4 @@
-export * from './user.selectors';
-export * from './error.selectors';
-export * from './provider.selectors';
+export * from './user.selector';
+export * from './ui.selector';
+export * from './auth.selector';
+export * from './provider.selector';

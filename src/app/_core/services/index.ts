@@ -4,3 +4,5 @@ export * from './user.service';
 
 export * from './category.service';
 export * from './artist-service.service';
+
+export * from './error.service';

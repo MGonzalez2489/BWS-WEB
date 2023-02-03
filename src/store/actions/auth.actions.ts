@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { ILogin, ISession } from '@shared/models';
 
-export enum AUTH_ACTIONS {
+enum AUTH_ACTIONS {
   LOGIN = '[AUTH] Login',
   LOGIN_SUCCESS = '[AUTH] Login Success',
   LOGIN_FAIL = '[AUTH] Login Fail',
@@ -19,7 +19,7 @@ export const SigninAction = createAction(
 
 export const SigninSuccessAction = createAction(
   AUTH_ACTIONS.SIGNIN_SUCCESS,
-  props<{ session: ISession }>()
+  props<{ token: string }>()
 );
 export const SigninFailedAction = createAction(
   AUTH_ACTIONS.SIGNIN_FAIL,
@@ -34,7 +34,7 @@ export const LoginAction = createAction(
 
 export const LoginSuccessAction = createAction(
   AUTH_ACTIONS.LOGIN_SUCCESS,
-  props<{ session: ISession }>()
+  props<{ token: string }>()
 );
 export const LoginFailedAction = createAction(
   AUTH_ACTIONS.LOGIN_FAIL,

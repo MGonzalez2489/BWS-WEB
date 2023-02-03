@@ -2,13 +2,19 @@
   <div
     class="col-12 d-flex flex-column justify-content-center align-items-center"
   >
-    <div class="m-5">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="m-5 text-center">
+      <h5>Dejanos conocer que servicios ofreces</h5>
+      <p>
+        Posteriormente podras agregar, modificar o eliminar tus servicios cuando
+        lo desees.
+      </p>
     </div>
     <div class="card w-50 border-0">
-      <div class="card-header bg-white d-flex justify-content-between">
+      <div class="card-header bg-white d-flex justify-content-between px-0">
         <span>Servicios Registrados</span>
-        <button (click)="open(content)" class="btn btn-primary btn-sm">Agregar</button>
+        <button (click)="open(content)" class="btn btn-primary btn-sm">
+          Agregar
+        </button>
       </div>
       <div class="card-body px-0 pb-0">
         <table class="table table-striped">
@@ -26,11 +32,16 @@
               </td>
               <td>{{ s.cost | currency }}</td>
               <td>
-                  <button class="btn btn-outline-danger btn-sm">D</button>
+                <button class="btn btn-outline-danger btn-sm">D</button>
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+      <div class="card-body text-end px-0">
+        <button class="btn btn-primary" (click)="finishOnboardingFn()">
+          Finalizar Registro
+        </button>
       </div>
     </div>
   </div>

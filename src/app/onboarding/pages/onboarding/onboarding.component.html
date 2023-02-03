@@ -11,6 +11,7 @@
     ></app-general-form>
     <app-services-form
       [user]="user"
+      (finishOnboarding)="finishOnboarding()"
       *ngSwitchCase="'services'"
     ></app-services-form>
     <div *ngSwitchDefault>Onboarding Page</div>

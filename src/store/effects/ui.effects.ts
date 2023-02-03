@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { RemoveOpenedModalAction, SetOpenedModalAction } from '@store/actions';
-import { map, mergeMap } from 'rxjs';
+import { RemoveOpenedModalAction } from '@store/actions/ui.actions';
+import { map } from 'rxjs';
 
 @Injectable()
 export class UiEffects {

@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from '@core/services';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of } from 'rxjs';
-
-import * as AuthActions from '@store/actions/auth.actions';
-import * as UserActions from '@store/actions/user.actions';
-import { ILogin, ISession, ResultModel } from '@shared/models';
 import { Router } from '@angular/router';
+import { AuthService, ErrorService } from '@core/services';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { BWSState } from '@store/states';
-import { ErrorService } from '@core/services/error.service';
+import { UserTypeEnum } from '@shared/enums';
+import { ILogin, ISession, ResultModel } from '@shared/models';
+import {
+  LoginAction,
+  LoginFailedAction,
+  LoginSuccessAction,
+  SigninAction,
+  SigninFailedAction,
+  SigninSuccessAction,
+} from '@store/actions/auth.actions';
+import {
+  GetUserSuccessAction,
+  UpdateUserTypeAction,
+} from '@store/actions/user.actions';
+import { AppState } from '@store/states/app.state';
+import { catchError, map, mergeMap, of } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
@@ -18,43 +27,71 @@ export class AuthEffects {
     private authService: AuthService,
     private errorService: ErrorService,
     private router: Router,
-    private store: Store<BWSState>
+    private store: Store<AppState>
   ) {}
 
   login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.LoginAction),
+      ofType(LoginAction),
       mergeMap((data: { params: ILogin }) => {
         this.errorService.cleanError();
         return this.authService.login(data.params).pipe(
           map((response: ResultModel<ISession>) => {
             if (!response.isSuccess) {
               this.errorService.setError(response);
-              return AuthActions.LoginFailedAction({
+              return LoginFailedAction({
                 payload: response.message,
               });
             }
-            const user = response.model.user;
+            const { user, token } = response.model;
+            this.store.dispatch(GetUserSuccessAction({ user }));
+            //onboarding
             if (user.boardingRequired) {
               this.router.navigate(['/onboarding']);
             } else {
               if (user.consumerProfile) {
+                this.store.dispatch(
+                  UpdateUserTypeAction({ userType: UserTypeEnum.consumer })
+                );
                 this.router.navigate(['/1']);
-              } else {
+              }
+              if (user.artistProfile) {
+                this.store.dispatch(
+                  UpdateUserTypeAction({ userType: UserTypeEnum.artist })
+                );
                 this.router.navigate(['/2']);
               }
-              //navigate to the starting page for each profile
             }
+
+            //verificar navegacioon si requiere ornboarding o no
+            return LoginSuccessAction({ token });
+
+            //const user = response.model.user;
+            //if (user.boardingRequired) {
+            //} else {
+            //if (user.consumerProfile) {
+            //this.store.dispatch(
+            //UserActions.UpdateUserTypeAction({
+            //userType: UserTypeEnum.consumer,
+            //})
+            //);
+            //this.router.navigate(['/1']);
+            //} else {
+            //this.store.dispatch(
+            //UserActions.UpdateUserTypeAction({
+            //userType: UserTypeEnum.artist,
+            //})
+            //);
+
+            //this.router.navigate(['/2']);
+            //}
+            ////navigate to the starting page for each profile
+            //}
             //navigate to organization home page for owner
-            this.store.dispatch(UserActions.GetUserSuccessAction({ user }));
-            return AuthActions.LoginSuccessAction({
-              session: response.model,
-            });
           }),
           catchError((err) => {
             this.errorService.setError(err);
-
-            return of(AuthActions.LoginFailedAction({ payload: err }));
+            return of(LoginFailedAction({ payload: err }));
           })
         );
       })
@@ -63,7 +100,7 @@ export class AuthEffects {
 
   signin = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.SigninAction),
+      ofType(SigninAction),
       mergeMap((data: { params: ILogin }) => {
         this.errorService.cleanError();
 
@@ -71,20 +108,17 @@ export class AuthEffects {
           map((response: ResultModel<ISession>) => {
             if (!response.isSuccess) {
               this.errorService.setError(response);
-              return AuthActions.SigninFailedAction({ payload: response });
+              return SigninFailedAction({ payload: response });
             }
 
-            const user = response.model.user;
-            this.store.dispatch(UserActions.GetUserSuccessAction({ user }));
-
+            const { user, token } = response.model;
+            this.store.dispatch(GetUserSuccessAction({ user }));
             this.router.navigate(['/onboarding']);
-            return AuthActions.SigninSuccessAction({
-              session: response.model,
-            });
+            return SigninSuccessAction({ token });
           }),
           catchError((err) => {
             this.errorService.setError(err);
-            return of(AuthActions.SigninFailedAction({ payload: err }));
+            return of(SigninFailedAction({ payload: err }));
           })
         );
       })

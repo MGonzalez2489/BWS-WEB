@@ -5,6 +5,7 @@ import * as UI_Actions from '@store/actions/ui.actions';
 
 const initialState: UiState = {
   modal: false,
+  error: null,
 };
 
 const _uiReducer = createReducer(
@@ -19,6 +20,18 @@ const _uiReducer = createReducer(
     return {
       ...state,
       modal: false,
+    };
+  }),
+  on(UI_Actions.SetErrorAction, (state, { error }) => {
+    return {
+      ...state,
+      error: error,
+    };
+  }),
+  on(UI_Actions.CleanErrorAction, (state) => {
+    return {
+      ...state,
+      error: null,
     };
   })
 );

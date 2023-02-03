@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IUser } from '@shared/models';
-import { BWSState } from '@store/states';
-import * as UserActions from '@store/actions/user.actions';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BWSFormGroup } from '@core/classes';
 import { GenderEnum } from '@shared/enums';
 import { UtilEnum } from '@shared/util';
 import { DestroyHook } from '@shared/components';
+import { AppState } from '@store/states/app.state';
+import { UpdateUserAction } from '@store/actions/user.actions';
 
 @Component({
   selector: 'app-general-form',
@@ -19,7 +19,7 @@ export class GeneralFormComponent extends DestroyHook implements OnInit {
   user: IUser;
   userForm: BWSFormGroup;
   availableGender = UtilEnum.enumToArray(GenderEnum);
-  constructor(private store: Store<BWSState>, private fb: FormBuilder) {
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {
     super();
   }
   ngOnInit(): void {
@@ -53,6 +53,6 @@ export class GeneralFormComponent extends DestroyHook implements OnInit {
       consumerProfile: this.user.consumerProfile,
       artistProfile: this.user.artistProfile,
     };
-    this.store.dispatch(UserActions.UpdateUserAction({ user: updatedUser }));
+    this.store.dispatch(UpdateUserAction({ user: updatedUser }));
   }
 }

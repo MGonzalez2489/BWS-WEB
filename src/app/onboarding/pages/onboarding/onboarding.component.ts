@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { OnboardingStepsEnum } from '@shared/enums';
 import { ICategory, IUser } from '@shared/models';
-import { BWSState } from '@store/states';
 import * as ProviderActions from '@store/actions/provider.actions';
-import { getCategories, getUser } from '@store/selectors';
+import { selectCategories, selectUser } from '@store/selectors';
 import { takeUntil } from 'rxjs';
 import { DestroyHook } from '@shared/components';
+import { AppState } from '@store/states/app.state';
 
 @Component({
   selector: 'app-onboarding',
@@ -18,11 +18,11 @@ export class OnboardingComponent extends DestroyHook {
   user: IUser;
   currentStep: OnboardingStepsEnum;
   categories: ICategory[];
-  constructor(private store$: Store<BWSState>, private router: Router) {
+  constructor(private store$: Store<AppState>, private router: Router) {
     super();
     this.store$.dispatch(ProviderActions.GetCategoriesAction());
     this.store$
-      .select(getUser)
+      .select(selectUser)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data) => {
         this.user = data;
@@ -30,7 +30,7 @@ export class OnboardingComponent extends DestroyHook {
       });
 
     this.store$
-      .select(getCategories)
+      .select(selectCategories)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data) => {
         this.categories = data;
@@ -50,8 +50,16 @@ export class OnboardingComponent extends DestroyHook {
       if (this.user.artistProfile) {
         this.router.navigate(['/2']);
       } else if (this.user.consumerProfile) {
-        this.router.navigate(['/2']);
+        this.router.navigate(['/1']);
       }
+    }
+  }
+  finishOnboarding(): void {
+    this.currentStep = OnboardingStepsEnum.none;
+    if (this.user.artistProfile) {
+      this.router.navigate(['/2']);
+    } else if (this.user.consumerProfile) {
+      this.router.navigate(['/1']);
     }
   }
 

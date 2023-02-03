@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IArtistProfile, ResultModel } from '@shared/models';
+import { IArtistProfile, IArtistService, ResultModel } from '@shared/models';
 import { Observable } from 'rxjs';
 import { RequestService } from './request.service';
 
@@ -11,7 +11,7 @@ export class ArtistServicesService {
     userId: string,
     serviceId: string,
     cost: number
-  ): Observable<ResultModel<IArtistProfile>> {
+  ): Observable<ResultModel<IArtistService[]>> {
     return this.requestService.post(`artist/${userId}/services/create`, {
       serviceId,
       cost,

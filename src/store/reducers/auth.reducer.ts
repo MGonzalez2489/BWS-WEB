@@ -1,10 +1,10 @@
 import { on } from '@ngrx/store';
-import { AuthState } from '@store/states';
-import * as AuthActions from '@store/actions';
-import { createRehydrateReducer } from '.';
 import { FEATURE_NAME } from '@store/constants';
+import { AuthState } from '@store/states';
+import { createRehydrateReducer } from './_rehidrateReducer';
+import * as AuthActions from '@store/actions/auth.actions';
 
-export const initialState: AuthState = {
+const initialState: AuthState = {
   token: null,
 };
 
@@ -14,21 +14,26 @@ const _authReducer = createRehydrateReducer(
   on(AuthActions.LoginAction, (state) => {
     return state;
   }),
-  on(AuthActions.LoginSuccessAction, (state, { session }) => {
+  on(AuthActions.LoginSuccessAction, (state, { token }) => {
     return {
       ...state,
-      token: session.token,
+      token,
     };
+  }),
+  on(AuthActions.LoginFailedAction, (state, { payload }) => {
+    return state;
   }),
   on(AuthActions.SigninAction, (state) => {
     return state;
   }),
-
-  on(AuthActions.SigninSuccessAction, (state, { session }) => {
+  on(AuthActions.SigninSuccessAction, (state, { token }) => {
     return {
       ...state,
-      token: session.token,
+      token,
     };
+  }),
+  on(AuthActions.SigninFailedAction, (state, { payload }) => {
+    return state;
   })
 );
 
