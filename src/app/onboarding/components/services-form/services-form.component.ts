@@ -8,6 +8,8 @@ import {
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DestroyHook } from '@shared/components';
+import { ConfirmationModalComponent } from '@shared/components/confirmation-modal/confirmation-modal.component';
+import { ConfirmationModalResultEnum } from '@shared/enums';
 import { ICategory, IService, IUser } from '@shared/models';
 import { CreateArtistServiceAction } from '@store/actions/artist-services.actions';
 import { GetServicesAction } from '@store/actions/provider.actions';
@@ -44,7 +46,7 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
   }
   ngOnInit(): void {
     this.initializeForm();
-
+    this.deleteService();
     this.store$
       .select(selectCategories)
       .pipe(takeUntil(this.unsubscribe$))
@@ -85,6 +87,21 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
   }
   finishOnboardingFn(): void {
     this.finishOnboarding.emit(true);
+  }
+  deleteService(): void {
+    const modal = this.modalService.open(ConfirmationModalComponent);
+    (modal.componentInstance as ConfirmationModalComponent).title =
+      'titulo de prueba';
+    (modal.componentInstance as ConfirmationModalComponent).message =
+      'message de prueba';
+
+    modal.closed.subscribe((data: ConfirmationModalResultEnum) => {
+      if (data === ConfirmationModalResultEnum.Yes) {
+        alert('yes');
+      } else {
+        alert('no');
+      }
+    });
   }
 
   open(content) {
