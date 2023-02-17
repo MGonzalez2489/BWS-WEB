@@ -76,7 +76,7 @@
 <ng-template #content let-modal>
   <form [formGroup]="form" (submit)="createService()">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Nuevo Servicio</h4>
       <button
         type="button"
         class="btn-close"
@@ -92,8 +92,9 @@
           id="categoria"
           aria-label="Categoria"
           formControlName="category"
+          autofocus
         >
-          <option value="0">Selecciona una Categoria</option>
+          <option value="-1">Selecciona una Categoria</option>
           <option [value]="c.publicId" *ngFor="let c of categories">
             {{ c.displayName }}
           </option>
@@ -105,9 +106,10 @@
           class="form-select"
           id="servicio"
           aria-label="Servicio"
+          [disabled]="formC['category'].value === -1"
           formControlName="service"
-          [disabled]="true"
         >
+          <option value="-1">Selecciona una Categoria</option>
           <option [value]="c.publicId" *ngFor="let c of services">
             {{ c.displayName }}
           </option>

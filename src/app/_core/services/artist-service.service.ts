@@ -11,7 +11,7 @@ export class ArtistServicesService {
     userId: string,
     serviceId: string,
     cost: number
-  ): Observable<ResultModel<IArtistService[]>> {
+  ): Observable<ResultModel<IArtistService>> {
     return this.requestService.post(`artist/${userId}/services/create`, {
       serviceId,
       cost,

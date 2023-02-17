@@ -20,7 +20,7 @@ export class OnboardingComponent extends DestroyHook {
   categories: ICategory[];
   constructor(private store$: Store<AppState>, private router: Router) {
     super();
-    this.store$.dispatch(ProviderActions.GetCategoriesAction());
+    //this.store$.dispatch(ProviderActions.GetCategoriesAction());
     this.store$
       .select(selectUser)
       .pipe(takeUntil(this.unsubscribe$))
@@ -79,14 +79,6 @@ export class OnboardingComponent extends DestroyHook {
     } else {
       step = OnboardingStepsEnum.services;
     }
-    //if (
-    //!this.user.artistProfile.services ||
-    //this.user.artistProfile.services.length == 0
-    //) {
-    //step = OnboardingStepsEnum.services;
-    //} else {
-    //step = OnboardingStepsEnum.none;
-    //}
     return step;
   }
 }

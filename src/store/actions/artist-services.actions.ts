@@ -19,7 +19,7 @@ export const CreateArtistServiceAction = createAction(
 
 export const CreateArtistServiceSuccessAction = createAction(
   ARTIST_SERVICES_ACTIONS.CREATE_ARTIST_SERVICE_SUCCESS,
-  props<{ services: IArtistService[] }>()
+  props<{ service: IArtistService }>()
 );
 
 export const CreateArtistServiceFailAction = createAction(

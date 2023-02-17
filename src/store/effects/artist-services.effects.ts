@@ -30,15 +30,16 @@ export class ArtistServicesEffects {
         this.artistServicesService
           .createArtistService(params.userId, params.serviceId, params.cost)
           .pipe(
-            map((response: ResultModel<IArtistService[]>) => {
+            map((response: ResultModel<IArtistService>) => {
               if (!response.isSuccess) {
                 return CreateArtistServiceFailAction({
                   payload: response.message,
                 });
               }
+              console.log('model', response.model);
               this.store.dispatch(RemoveOpenedModalAction());
               return CreateArtistServiceSuccessAction({
-                services: response.model,
+                service: response.model,
               });
             }),
             catchError((error) =>

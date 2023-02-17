@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { BWSFormGroup } from '@core/classes';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { DestroyHook } from '@shared/components';
@@ -33,7 +34,7 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
   categories: ICategory[];
   services: IService[];
   userServices: any;
-  form: FormGroup;
+  form: BWSFormGroup;
 
   closeResult = '';
   constructor(
@@ -46,7 +47,7 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
   }
   ngOnInit(): void {
     this.initializeForm();
-    this.deleteService();
+    //this.deleteService();
     this.store$
       .select(selectCategories)
       .pipe(takeUntil(this.unsubscribe$))
@@ -55,22 +56,23 @@ export class ServicesFormComponent extends DestroyHook implements OnInit {
       });
 
     this.store$
-      .select(selectServices)
+      .select(selectServices(''))
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data) => {
         this.services = data;
-        if (this.services && this.services.length > 0)
-          this.form.patchValue({ service: this.services[0].publicId });
       });
   }
   initializeForm(): void {
     this.form = this.fb.group({
-      category: new FormControl(0, [Validators.required]),
-      service: new FormControl(null, [Validators.required]),
+      category: new FormControl(-1, [Validators.required]),
+      service: new FormControl(-1, [Validators.required]),
       cost: new FormControl(0, [Validators.required, Validators.min(1)]),
     });
   }
 
+  get formC() {
+    return this.form.controls;
+  }
   selectCategory(value: any): void {
     this.store$.dispatch(GetServicesAction({ category: value }));
   }

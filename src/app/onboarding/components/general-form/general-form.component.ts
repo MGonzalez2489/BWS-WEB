@@ -25,14 +25,20 @@ export class GeneralFormComponent extends DestroyHook implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
   }
+  get form() {
+    return this.userForm.controls;
+  }
+
   initializeForm(): void {
     this.userForm = this.fb.group({
       firstName: new FormControl(this.user.firstName, [Validators.required]),
       lastName: new FormControl(this.user.lastName, [Validators.required]),
-      phone: new FormControl(this.user.phone, [Validators.required]),
-      gender: new FormControl(this.user.gender || this.availableGender[0].key, [
+      phone: new FormControl(this.user.phone, [
         Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
       ]),
+      gender: new FormControl(-1, [Validators.required, Validators.min(1)]),
     });
   }
   submit(): void {

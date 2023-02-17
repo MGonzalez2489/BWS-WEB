@@ -9,7 +9,8 @@ export const selectCategories = createSelector(
   (state: ProviderState) => state?.categories
 );
 
-export const selectServices = createSelector(
-  providerState,
-  (state: ProviderState) => state?.services
-);
+export const selectServices = (categoryId: string) =>
+  createSelector(providerState, (state: ProviderState) => {
+    console.log('services', state?.services);
+    return state?.services;
+  });

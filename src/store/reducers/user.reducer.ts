@@ -87,14 +87,14 @@ const _userReducer = createRehydrateReducer(
   }),
   on(
     ArtistServiceActions.CreateArtistServiceSuccessAction,
-    (state, { services }) => {
+    (state, { service }) => {
       return {
         ...state,
         user: {
           ...state.user,
           artistProfile: {
             ...state.user.artistProfile,
-            services,
+            services: [...state.user.artistProfile.services, service],
           },
         },
       };
